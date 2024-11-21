@@ -1,0 +1,47 @@
+
+
+    
+           
+    
+    
+    
+
+    
+    
+    
+  <body>
+    <app-headerPrincipale></app-headerPrincipale>
+    <!-- Entête principale -->
+
+<div class='container'>
+<div class="row">
+  <div class="col-sm-10 mb-10 mb-sm-0">
+    <div class="card" style='border:none; '>
+      <div class="card-body">
+          <br/> <br/> 
+        <span style='font-size:110%;' *ngFor='let chapitre of chapitreFiltres; let i=index'>
+          <h1>
+            {{chapitre.titre}}
+          </h1>
+          <br/>        
+          <div *ngFor='let contenu of ContenusFiltres '>
+            <h3 *ngIf='contenu.chapitre==chapitre.id'>{{contenu.id}}- {{contenu.sous_titre}}</h3>
+            <p *ngIf='contenu.chapitre==chapitre.id'>
+                {{contenu.description}}
+              </p>          
+          </div>
+            <br/><br/>                
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer>
+  <div class="footer-bottom" style='text-align: center'>
+      <p>&copy; 2024 FuturAlliés. Tous droits réservés.</p>
+  </div>
+</footer>
+
+</body>

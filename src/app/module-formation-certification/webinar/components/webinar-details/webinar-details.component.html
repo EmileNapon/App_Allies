@@ -1,0 +1,26 @@
+
+<app-headerPrincipale></app-headerPrincipale>
+<div class="webinar-details" *ngIf="webinar">
+  <div *ngIf="loading" class="loading-spinner">
+    <!-- Tu peux utiliser une animation de type spinner ici -->
+    <p>Chargement en cours...</p>
+  </div>
+   <!-- Afficher la liste des webinaires une fois qu'ils sont chargés -->
+  <div *ngIf="!loading">
+    <h1>{{ webinar.title }}</h1>
+    <img [src]="webinar.speakerPicture_url" alt="Orateur" />
+    <p><strong>Orateur :</strong> {{ webinar.speaker }}</p>
+    <p><strong>Date de début :</strong> {{ webinar.startDateTime | date:'short' }}</p>
+    <p><strong>Date de fin :</strong> {{ webinar.endDateTime | date:'short' }}</p>
+    <p><strong>Description :</strong> {{ webinar.description }}</p>
+    <p><strong>Maximum de participants :</strong> {{ webinar.maxParticipants }}</p>
+    <p><strong>Prix :</strong> {{ webinar.isPaid ? (webinar.price + ' FCFA') : 'Gratuit' }}</p>
+    <button (click)="register()">S'inscrire</button>
+  </div>
+</div>
+  
+
+
+  
+  
+  

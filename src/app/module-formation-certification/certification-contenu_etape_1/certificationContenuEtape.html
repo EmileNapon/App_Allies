@@ -1,0 +1,46 @@
+<body>
+    
+  <app-headerPrincipale></app-headerPrincipale>
+
+
+
+
+
+
+<div class='container'>
+    <div class="row " >
+      <h2><p class='col-md-12' style='background-color:rgb(2, 51, 104);color:white'> {{filtredCertificat[0].titre}}</p></h2>
+      <br/> <br/> 
+      <p>{{filtredCertificatChapitre[0].titre}}<p>
+        <div class="col-sm-4 mb-6 mb-sm-0"  >
+          <div class="card" style='border:none'>
+            <div  class="card-body" *ngFor='let x of filteredCertificatsArticle' >
+              <p  class="card-title"><i class="bi bi-file-earmark-plus-fill" style='color:#3e576e;padding-left:5px'></i><span style='padding:5px;'>Article | {{x.titreArticle}}</span></p>
+            </div>
+            <div class="card-body" *ngFor='let x of filteredCertificatsVideo'>
+              <p class="card-title"><i class="bi bi-camera-video-fill" style='color:#3e576e;padding-left:5px'></i> <span style='padding:5px;'>Video | {{x.titreVideo}}</span></p>
+            </div>
+            <div class="card-body" *ngFor='let x of filteredCertificatPosdcast'>
+              <p class="card-title"><i class="bi bi-play-fill"  style='color:#3e576e;padding-left:5px'></i><span style='padding:5px;'>Posdcast | {{x.titrePodcast}}</span></p>
+            </div>
+            <div class="card-body" *ngFor='let x of filteredCertificatPosdcast'>
+              <button (click)='onSelectPage(1)' class="card-title"><i class="bi bi-clock-fill"  style='color:#3e576e;padding-left:5px'></i><span style='padding:5px;'>Evaluation</span></button>
+            </div> 
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="card" style='border:none'>
+            <div class="card-body">
+              <video width="520" height="280" controls>
+                <source [src]="" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture de vidéos.
+              </video>
+
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+   
+    </body>

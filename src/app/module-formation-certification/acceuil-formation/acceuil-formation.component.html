@@ -1,0 +1,150 @@
+
+    
+           
+    
+    
+    
+    <body>
+
+        <app-headerPrincipale></app-headerPrincipale>
+              
+     <div class='container-fluid images-fixed' >
+
+    </div>
+    
+      <section class="training-domains py-5 bg-light" >
+          <div class="container">
+            <div class='row' >
+              <div class="col-md-4" *ngFor="let domaine of domaines"  style='padding:10px'> 
+                  <button class=" container-l" (click)="onSelectDomaine(domaine.id)">
+                    <img src="assets/im1.jpg" class="card-img-top" alt="Développement Web" height='160px'>  
+                    <br/><br/>                        
+                     <p  class="card-title ModuleColor">{{domaine.nom_domaine}}</p>
+                     <br/>    
+                  </button>      
+              </div>
+          </div>
+      </div>
+      
+      
+  </section>
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>À propos</h3>
+            <ul>
+                <li><a href="#about">À propos de nous</a></li>
+                <li><a href="#contact">Nous contacter</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Nos Services</h3>
+            <ul>
+                <li><a href="#formations">Formations</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#opportunities">Opportunités</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Suivez-nous</h3>
+            <ul class="social-links">
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">LinkedIn</a></li>
+                <li><a href="#">YouTube</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom " >
+        <p>&copy; 2024 FuturAlliés. Tous droits réservés.</p>
+    </div>
+</footer>
+</body>

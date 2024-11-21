@@ -1,0 +1,33 @@
+
+<div  class="container-xl">
+  <div class="table-responsive">
+      <div class="table-wrapper">
+          <div class="table-title">
+              <div class="row">
+                  <div class="col-sm-6">
+                      <h2><b>Contenus</b></h2>
+                  </div>
+                  <div class="col-sm-6">
+                      <a  class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span></span></a>
+                      <a   class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span></span></a>
+                      <a  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span></span></a>  						
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+  <div class="custom-card">
+    <div class="card-body" *ngFor="let contenu of ContenusFiltres" class="custom-card">
+      <div class="form-group" (click)='onElementClick(contenu.id)' >
+        <label >{{contenu.id}}.<span [innerHTML]="contenu.sous_titre"></span></label>
+        <ckeditor *ngIf="contenu.id === evenementClique" id="contentEditor" [(ngModel)]="contenu.sous_titre" [editor]="Editor" class="custom-editor"></ckeditor>
+        <ckeditor *ngIf="contenu.id === evenementClique" id="descriptionEditor" [(ngModel)]="contenu.description" [editor]="Editor" class="custom-editor"></ckeditor>
+      </div>
+
+    </div>
+    <button (click)='sauvegarderContenus()'>Sauvegarder</button>
+  </div>
+  
+  
