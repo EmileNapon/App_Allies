@@ -13,6 +13,9 @@
                 <span class="input-group-text"><i class="bi bi-person"></i></span>
                 <input type="text" id="nom" formControlName="nom" class="form-control" placeholder="Entrez votre nom complet">
             </div>
+            <div *ngIf="registrationForm.get('nom')?.invalid && registrationForm.get('nom')?.touched" class="text-danger">
+                Nom requis et min 2 lettre.
+            </div>
         </div>
 
         <!-- Prenom -->
@@ -22,6 +25,9 @@
                 <span class="input-group-text"><i class="bi bi-person"></i></span>
                 <input type="text" id="prenom" formControlName="prenom" class="form-control" placeholder="Entrez votre nom complet">
             </div>
+            <div *ngIf="registrationForm.get('prenom')?.invalid && registrationForm.get('prenom')?.touched" class="text-danger">
+                Prenom requis et min 2 lettre.
+            </div>
         </div>
 
         <!-- Adresse e-mail -->
@@ -29,7 +35,10 @@
             <label for="email" class="col-sm-4 col-form-label">Adresse e-mail:</label>
             <div class="col-sm-8 input-group">
                 <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                <input type="email" id="email" formControlName="email" class="form-control" placeholder="Entrez votre adresse e-mail">
+                <input type="email" id="email" formControlName="email" class="form-control" placeholder="Entrez votre adresse e-mail">         
+            </div>
+            <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched" class="text-danger">
+                Adresse e-mail requise.
             </div>
         </div>
 
@@ -40,6 +49,9 @@
                 <span class="input-group-text"><i class="bi bi-lock"></i></span>
                 <input type="password" id="password" formControlName="password" class="form-control" placeholder="Créez un mot de passe">
             </div>
+            <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched" class="text-danger">
+                Mot de passe requise.
+            </div>
         </div>
 
         <!-- Confirmer Mot de Passe -->
@@ -49,6 +61,9 @@
                 <span class="input-group-text"><i class="bi bi-lock"></i></span>
                 <input type="password" id="password2" formControlName="password2" class="form-control" placeholder="Confirmez votre mot de passe">
             </div>
+            <div *ngIf="registrationForm.get('password2')?.invalid && registrationForm.get('password2')?.touched" class="text-danger">
+                confirmer le mot de passe.
+            </div>
         </div>
 
         <!-- Numéro de Téléphone -->
@@ -56,7 +71,10 @@
             <label for="phone_number" class="col-sm-4 col-form-label">Numéro de téléphone:</label>
             <div class="col-sm-8 input-group">
                 <span class="input-group-text"><i class="bi bi-telephone"></i></span>
-                <input type="tel" id="phone_number" formControlName="phone_number" class="form-control" placeholder="Entrez votre numéro de téléphone">
+                <input type="tel" id="phone_number" formControlName="phone_number" class="form-control" placeholder="Entrez votre numéro de téléphone">              
+            </div>
+            <div *ngIf="registrationForm.get('phone_number')?.invalid && registrationForm.get('phone_number')?.touched" class="text-danger">
+                numero de telephone requis.
             </div>
         </div>
 
@@ -65,9 +83,12 @@
             <label for="role" class="col-sm-4 col-form-label">Type d'utilisateur:</label>
             <div class="col-sm-8">
                 <select id="role" formControlName="role" class="form-select">
-                    <option value="etudiant">Étudiant</option>
+                    <option value="apprenant">Apprenant</option>
                     <option value="employeur">Employeur</option>
                 </select>
+            </div>
+            <div *ngIf="registrationForm.get('role')?.invalid && registrationForm.get('role')?.touched" class="text-danger">
+                Choisir vote type requis.
             </div>
         </div>
 

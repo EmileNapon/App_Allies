@@ -1,110 +1,20 @@
 <app-headerPrincipale></app-headerPrincipale>
-<div class="webinar-card">
-  <h2>{{ webinar.title }}</h2>
-  <p><strong>Formateur :</strong> {{ webinar.speaker }}</p>
-  <p><strong>Moderateur :</strong> {{ webinar.createdAt| date: 'short' }}</p>
-  <p><strong>Type :</strong> {{ webinar.description }}</p>
-  <p><strong>Orateur :</strong> {{ webinar.speaker }}</p>
-  <p><strong>duree :</strong> {{ webinar.duree}}</p>
-  <p><strong>Type :</strong> {{ webinar.type }}</p>
-  <p><strong>Orateur :</strong> {{ webinar.speaker }}</p>
-  <p><strong>Date :</strong> {{ webinar.startDateTime | date: 'short' }}</p>
-  <p><strong>Type :</strong> {{ webinar.type }}</p>
-  
-  <!-- Lien vers les détails du webinaire avec l'ID -->
-  <a [routerLink]="['/webinar-details', webinar._id]" class="details-link">Voir Détails</a>
+<div class="header">
+    <div class="container text-center">
+        <h2>Café des Alliés : Le Webinaire</h2>
+        <p>Une initiative de FIDALLI BURKINA</p>
+    </div>
 </div>
 
 
 
-
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webinaire N°17 - L'intelligence artificielle au service du comptable</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .header, .footer {
-            background-color: #f0f0f0;
-            padding: 20px 0;
-        }
-        .event-info {
-            background-color: #003366;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        .event-info h3 {
-            font-weight: bold;
-        }
-        .presenter {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .presenter img {
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-        }
-        .presenter-name {
-            font-weight: bold;
-        }
-        .presenter-role {
-            font-size: 14px;
-            color: #555;
-        }
-        .button-container {
-            text-align: center;
-            margin-top: 30px;
-        }
-        .button-container a {
-            font-size: 18px;
-            background-color: #28a745;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .footer {
-            font-size: 14px;
-            color: #555;
-            text-align: center;
-            padding: 20px 0;
-        }
-        .footer img {
-            width: 150px;
-        }
-        .logos img {
-            width: 50px;
-            height: 50px;
-            margin: 0 10px;
-        }
-        .contacts img {
-            width: 20px;
-            margin-right: 5px;
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <div class="container text-center">
-            <h2>Café des Alliés : Le Webinaire</h2>
-            <p>Une initiative de FIDALLI BURKINA</p>
-        </div>
-    </div>
-
+<div class="webinar-card">
     <div class="event-info">
         <h3>Webinaire N°17</h3>
         <h4>Thème : L'intelligence artificielle au service du comptable</h4>
         <p><strong>Samedi 23 Novembre 2024 à partir de 10h00</strong></p>
     </div>
-
+  
     <div class="container">
         <div class="presenter">
             <div class="row">
@@ -155,8 +65,16 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+  <!-- Lien vers les détails du webinaire avec l'ID -->
+  <a [routerLink]="['/webinar-details', webinar._id]" class="details-link">Voir Détails</a>
+</div>
+
+
+
+
+
+
+
+
+
+

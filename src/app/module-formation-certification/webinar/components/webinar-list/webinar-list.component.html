@@ -1,16 +1,15 @@
-<app-headerPrincipale></app-headerPrincipale>
 <div class="webinar-list">
-    <h1>Webinaires Disponibles</h1>
-
-    <div *ngIf="loading" class="loading-spinner">
-      <!-- Tu peux utiliser une animation de type spinner ici -->
-      <p>Chargement en cours...</p>
-    </div>
-
        <!-- Afficher la liste des webinaires une fois qu'ils sont chargés -->
     <div *ngIf="!loading">
       <app-webinar *ngFor="let webinar of webinars" [webinar]="webinar"></app-webinar>
+
     </div>
+    <h1>Webinaires Disponibles</h1>
+    
+        <div *ngIf="loading" class="loading-spinner">
+          <!-- Tu peux utiliser une animation de type spinner ici -->
+          <p>Chargement en cours...</p>
+        </div>
   
 </div>
   

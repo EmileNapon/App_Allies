@@ -12,6 +12,9 @@
                     <span class="input-group-text"><i class="bi bi-envelope"></i></span>
                     <input type="email" id="email" formControlName="email" class="form-control" placeholder="Entrez votre adresse e-mail">
                 </div>
+                <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger">
+                    E-mail requis.
+                </div>
             </div>
     
             <!-- Mot de Passe -->
@@ -20,6 +23,9 @@
                 <div class="col-sm-8 input-group">
                     <span class="input-group-text"><i class="bi bi-lock"></i></span>
                     <input type="password" id="password" formControlName="password" class="form-control" placeholder="Créez un mot de passe">
+                </div>
+                <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger">
+                    Passe word requis.
                 </div>
             </div>
     

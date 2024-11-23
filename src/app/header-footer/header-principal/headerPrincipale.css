@@ -59,7 +59,7 @@ nav a {
   
   .form-select.search-container{
     background-color: rgb(33, 33, 83);
-    color:rgb(255, 255, 255)
+    color:#ffffff
   }
 
   .navbar-scroll {
@@ -67,6 +67,7 @@ nav a {
     width: 100%;
     transition: top 0.3s ease-in-out, transform 0.3s ease-in-out; /* Transition pour le top et la translation */
     z-index: 1000; 
+
   }
   
   .navbar-scroll.fixed {

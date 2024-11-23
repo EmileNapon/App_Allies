@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from './service-inscription/service-inscription.service';
 import { User } from './interface-inscription/interface-inscription';
-
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -12,7 +12,7 @@ import { User } from './interface-inscription/interface-inscription';
 export class RegistrationComponent implements OnInit {
   registrationForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  constructor(private fb: FormBuilder, private userService: UserService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
@@ -39,7 +39,7 @@ export class RegistrationComponent implements OnInit {
       this.userService.registerUser(user).subscribe({
         next: (response) => {
           console.log('User registered successfully:', response);
-          console.log(user)
+          this.router.navigate([`/usersPages/login`])
         },
         error: (error) => {
           console.error('Error registering user:', error);

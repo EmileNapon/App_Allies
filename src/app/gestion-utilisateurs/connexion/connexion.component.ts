@@ -44,7 +44,7 @@ export class ConnexionComponent implements OnInit {
         localStorage.setItem('user_last_name', response.lastName);
       console.log(response.role)
         // Rediriger en fonction du rôle de l'utilisateur
-        if (response.role === 'etudiant') {
+        if (response.role === 'apprenant') {
           this.router.navigate(['/acceuil']);
         } else if (response.role === 'employeur') {
           this.router.navigate(['/premiumEmployeur']);
