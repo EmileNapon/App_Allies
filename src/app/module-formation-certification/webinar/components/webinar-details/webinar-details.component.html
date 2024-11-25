@@ -1,5 +1,4 @@
-
-<app-headerPrincipale></app-headerPrincipale>
+<body >
 <div class="webinar-details" *ngIf="webinar">
   <div *ngIf="loading" class="loading-spinner">
     <!-- Tu peux utiliser une animation de type spinner ici -->
@@ -7,20 +6,141 @@
   </div>
    <!-- Afficher la liste des webinaires une fois qu'ils sont chargés -->
   <div *ngIf="!loading">
-    <h1>{{ webinar.title }}</h1>
+    <!-- <h1>{{ webinar.title }}</h1>
     <img [src]="webinar.speakerPicture_url" alt="Orateur" />
-    <p><strong>Orateur :</strong> {{ webinar.speaker }}</p>
-    <p><strong>Date de début :</strong> {{ webinar.startDateTime | date:'short' }}</p>
-    <p><strong>Date de fin :</strong> {{ webinar.endDateTime | date:'short' }}</p>
+    <p><strong>Formateur :</strong> {{ webinar.speaker }}</p>
+    <p><strong>Date :</strong> {{ webinar.startDateTime | date:'short' }}</p>
+    <p><strong>Heure :</strong> {{ webinar.endDateTime | date:'short' }}</p>
     <p><strong>Description :</strong> {{ webinar.description }}</p>
     <p><strong>Maximum de participants :</strong> {{ webinar.maxParticipants }}</p>
-    <p><strong>Prix :</strong> {{ webinar.isPaid ? (webinar.price + ' FCFA') : 'Gratuit' }}</p>
+    <p><strong>Prix :</strong> {{ webinar.isPaid ? (webinar.price + ' FCFA') : 'Gratuit' }}</p> -->
+
+        
+  <div  style="background-color: #fff;">
+    <div class="container text-center" >
+      <!-- En-tête avec les logos et texte -->
+      <div class="webinar-header d-flex justify-content-between align-items-center ">
+        <!-- Logo de gauche avec texte -->
+        <div class="logo-left-wrapper text-center">
+          <a >
+            <img src="assets/icon.png" alt="FuturAlliés" href='#' class="logo" height="25" >
+          </a>
+          <p class="text-secondary fw-bold m-0">Une initiative de <span class="text-primary">FIDALLI</span></p>
+        </div>
+  
+        <!-- Logo de droite avec "Webinaire" en arrière-plan -->
+        <div class="logo-right-wrapper position-relative text-center">
+          <img src="path_to_logo_right.png" alt="Logo Droit" class="logo-right mb-2" />
+          <div class="webinaire-background text-light fw-bold position-absolute">
+            WEBINAIRE
+          </div>
+          
+        </div>
+      </div>
+  
+      <!-- Titre principal -->
+      <div style='padding'>
+        <div class="text-center">
+          <h1 class="webinaire-title">WEBINAIRE N°17</h1>
+          <p class="webinaire-subtitle">Hebdomadaire / Gratuit</p>
+        </div>
+    </div>
+    <div class="theme-section text-center py-3">
+      <h2>L'INTELLIGENCE ARTIFICIELLE AU SERVICE DU COMPTABLE</h2>
+    </div>
+
+  
+      <h3 class=" date-time-container1 text-light ">
+        kk
+      </h3>
+      <br/>
+      <div class="date-time-container">
+        
+        <div class="date-time-box">
+          <!-- Date et jour -->
+          <div class="date-info">
+            <i class="bi bi-calendar3 text-success"></i>
+            <span class="fw-bold text-uppercase">Samedi</span>
+            <span class="date-large">
+              <strong>23</strong> <span class="badge bg-danger">Novembre</span> 2024
+            </span>
+          </div>
+          <!-- Heure -->
+          <div class="time-info">
+            <span class="text-uppercase">À partir de</span>
+            <span class="time-large">
+              <strong>10H00</strong>
+            </span>
+          </div>
+        </div>
+      
+        <!-- Webinaire gratuit -->
+        <div class="webinaire-info">
+          <span class="badge bg-success text-uppercase">
+            <i class="bi bi-play-circle"></i> Webinaire Gratuit
+          </span>
+        </div>
+      </div>
+      
+      <div class="row justify-content-center align-items-center py-4" style='display: inline-flex'>
+        <!-- Formateur -->
+        <div class="text-center">
+          <div class="photo-container">
+            <img src="assets/d.jpg" alt="Formateur" class="rounded-circle">
+          </div>
+          <h4 class="mt-3">Formateur</h4>
+          <p class="fw-bold">Anthony Nebie</p>
+          <p>Web Entrepreneur</p>
+        </div>
+      
+        <!-- Modératrice -->
+        <div class=" text-center">
+          <div class="photo-container">
+            <img src="assets/d.jpg" alt="Modératrice" class="rounded-circle">
+          </div>
+          <h4 class="mt-3">Modératrice</h4>
+          <p class="fw-bold">Massogolo Latifah Sanogo</p>
+          <p>Auditrice Comptable et Financière</p>
+        </div>
+      </div>
+      
+      
+  
+      <!-- Liens -->
+      <p>Revoir les enregistrements sur :</p>
+      <div class="links d-flex justify-content-center gap-3"  >
+        <a  class="btn btn-danger" target="_blank"  id='btn-custom'>
+          <i class="bi bi-youtube me-2" ></i> YouTube
+        </a>
+        <a  class="btn btn-primary"  id='btn-custom' >
+          <i class="bi bi-envelope me-2" ></i> Email
+        </a>
+        <a
+        
+          class="btn btn-success"
+          target="_blank" 
+           id='btn-custom'
+        >
+          <i class="bi bi-whatsapp me-2"></i> WhatsApp
+        </a>
+      </div>
+      <div class="text-center mt-4">
+        <p>Mail: <a href="mailto:infos@fidalli-ec.com">infos@fidalli-ec.com</a></p>
+        <p>WhatsApp: +226 72 77 69 69</p>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+
+    
     <button (click)="register()">S'inscrire</button>
   </div>
 </div>
   
 
+</body>
 
-  
   
   

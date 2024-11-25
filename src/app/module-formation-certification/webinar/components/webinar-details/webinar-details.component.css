@@ -1,10 +1,26 @@
+
+body{
+    margin: 0 auto; /* Centre le contenu horizontalement */
+    font-family: Arial, sans-serif;
+    max-width: 1000px; 
+    height: 500px; /* Limite la hauteur à 500px */
+    line-height: 1.2;
+}
+
+#btn-custom {
+    font-size: 12px;
+    padding: 5px 10px;
+    line-height: 1.2;
+  }
+  
+  
 /* Styles de base pour la section des détails du webinaire */
 .webinar-details {
     background-color: white; /* Fond blanc */
     border-radius: 8px; /* Bords arrondis */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
-    padding: 24px; /* Espacement interne */
-    margin: 16px; /* Espacement externe */
+    padding: 90px; /* Espacement interne */
+    margin: 50px; /* Espacement externe */
 }
 
 /* Styles pour le titre */
@@ -47,3 +63,259 @@
     background-color: #007bff; /* Changement de couleur au survol */
     color: white; /* Couleur du texte blanche */
 }
+
+
+
+
+
+
+  
+  
+  
+  /*-------------------------------------------------------------------------------------------------------------*/
+  
+  
+  
+  /* Logos */
+  .logo-left,
+  .logo-right {
+    max-width: 80px;
+  }
+  
+  .logo-left-wrapper p {
+    font-size: 0.9rem;
+  }
+  
+  .webinar-header {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 1rem;
+  }
+  
+  /* "WEBINAIRE" en arrière-plan du logo droit */
+  .webinaire-background {
+    font-size: 3rem;
+    color: #ffffff;
+    background-color: #28a745; /* Vert */
+    transform: rotate(-10deg); /* Inclinaison */
+    padding: 0.5rem 1rem;
+    z-index: -1; /* Derrière le logo */
+    opacity: 0.9;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-10deg);
+    position: absolute;
+  }
+  
+/* Style des conteneurs pour les photos */
+.photo-container {
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  background-color: #f0f0f0; /* Fond clair autour de la photo */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Ombre pour un effet esthétique */
+}
+
+.photo-container img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover; /* Recadrer l'image pour remplir le cercle */
+  border-radius: 50%; /* Cercle parfait */
+  border: 5px solid #ffffff; /* Bordure blanche */
+}
+
+/* Style général pour espacer les éléments */
+.text-center h4 {
+  color: #2c3e50; /* Couleur du titre */
+}
+
+.text-center p {
+  color: #34495e; /* Couleur des descriptions */
+  margin: 5px 0;
+}
+
+.row {
+  gap: 30px; /* Espacement horizontal entre les photos */
+}
+
+  
+  /* Liens */
+  .links a {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+  
+  
+  
+  
+  
+  /* Conteneur principal */
+  .date-time-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  /* Bloc de la date et heure */
+  .date-time-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-grow: 2;
+  }
+  
+  /* Date */
+  .date-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .date-large {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  /* Heure */
+  .time-info {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #00008b;
+  }
+  
+  .time-large {
+    color: #ff0000;
+    font-size: 1rem;
+  }
+  
+  /* Bloc Webinaire */
+  .webinaire-info {
+    text-align: center;
+    flex-grow: 1;
+  }
+  
+  .webinaire-info .badge {
+    font-size: 1.2rem;
+    padding: 8px 15px;
+    display: inline-block;
+    color: #ffffff;
+    background-color: #28a745;
+    border-radius: 5px;
+  }
+  
+
+  
+  .row.centrer-photo{
+    text-align: center;
+    padding-left: 100px;
+  }
+  
+  .text-center.centrer-photo{
+    padding-left: 200px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* Conteneur du thème */
+  .theme-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #130679;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 900px;
+  }
+  
+  /* Bloc de thème */
+  .theme-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Label du thème */
+  .theme-label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px;
+  }
+  
+  /* Valeur du thème */
+  .theme-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+    text-transform: uppercase;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

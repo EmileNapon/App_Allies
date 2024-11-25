@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class QizCoursFormationPresentielleComponent {
 
+  webinarData!: Webinar;
+
+  constructor(private webinarService: WebinarService) {}
+
+  ngOnInit(): void {
+    this.webinarData = this.webinarService.getWebinarData();
+  
+
+
+
 }

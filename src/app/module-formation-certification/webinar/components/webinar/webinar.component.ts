@@ -10,32 +10,40 @@ import { Router } from '@angular/router';
 export class WebinarComponent implements OnInit {
 
 
-  webinaire = {
-    theme: "L'intelligence artificielle au service du comptable",
-    date: "Samedi 23 Novembre 2024",
-    heure: "À partir de 10h00",
-    formateur: {
-      nom: "Anthony Nebie",
-      role: "Web Entrepreneur",
-      imageUrl: "https://via.placeholder.com/120"
+  webinars = [
+    {
+      id: 1,
+      title: "Les bases de l'IA",
+      theme: "Intelligence Artificielle",
+      date: "23 Novembre 2024",
+      time: "10:00",
+      format: "Gratuit",
+      image: "assets/images/ai-webinar.jpg",
     },
-    moderatrice: {
-      nom: "Massogolo Latifah Sanogo",
-      role: "Auditrice Comptable et Financière",
-      imageUrl: "https://via.placeholder.com/120"
+    {
+      id: 2,
+      title: "Introduction aux Systèmes Embarqués",
+      theme: "Systèmes Cyber-Physiques",
+      date: "25 Novembre 2024",
+      time: "14:00",
+      format: "Payant",
+      image: "assets/images/embedded-systems.jpg",
     },
-    logos: {
-      fidalli: "https://via.placeholder.com/150",
-      googleMeet: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Google_Meet_logo_2020.svg/1024px-Google_Meet_logo_2020.svg.png",
-      alliance: "https://via.placeholder.com/150",
-      futurallies: "https://via.placeholder.com/150"
+    {
+      id: 3,
+      title: "Optimisation des réseaux IoT",
+      theme: "Internet des Objets",
+      date: "28 Novembre 2024",
+      time: "16:00",
+      format: "Gratuit",
+      image: "assets/images/iot-webinar.jpg",
     },
-    contacts: {
-      email: "infos@fidalli-ec.com",
-      whatsapp: "+226 72 77 69 69"
-    }
-  };
+  ];
 
+  register(webinarId: number) {
+    alert(`Inscription réussie pour le webinaire ID : ${webinarId}`);
+    // Logique pour enregistrer l'utilisateur dans la base de données
+  }
 
 
 
@@ -60,30 +68,10 @@ export class WebinarComponent implements OnInit {
 
 
   
-}
 
-interface Webinaire {
-  theme: string;
-  date: string;
-  heure: string;
-  formateur: {
-      nom: string;
-      role: string;
-      imageUrl: string;
-  };
-  moderatrice: {
-      nom: string;
-      role: string;
-      imageUrl: string;
-  };
-  logos: {
-      fidalli: string;
-      googleMeet: string;
-      alliance: string;
-      futurallies: string;
-  };
-  contacts: {
-      email: string;
-      whatsapp: string;
-  };
+
+
+
+
+
 }

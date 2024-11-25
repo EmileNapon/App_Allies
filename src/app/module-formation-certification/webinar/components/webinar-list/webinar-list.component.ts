@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { WebinarService } from '../../services/webinar.service';
 import { Webinar } from '../../models/webinar.model';
+import { WebinarService1 } from '../webinar/service-web';
+import{Webinar1} from '../webinar/interface'
+
 // import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
@@ -10,16 +13,20 @@ import { Webinar } from '../../models/webinar.model';
 })
 export class WebinarListComponent implements OnInit {
   webinars: any[] = [];
+  webinarData!: Webinar1;
+
   loading: boolean = true; // Variable pour suivre l'état de chargement
 
   constructor(
     // private spinner: NgxSpinnerService
-    private webinarService: WebinarService,
+    private webinarService: WebinarService,private webinarService1: WebinarService1
     ) {}
 
   ngOnInit(): void {
     // this.spinner.show();
     this.getWebinars();
+    /////////////////////////////////
+    this.webinarData = this.webinarService1.getWebinarData();
   }
 
   getWebinars(): void {
@@ -35,5 +42,17 @@ export class WebinarListComponent implements OnInit {
         this.loading = false; // En cas d'erreur, arrêter le chargement
       }
     );
+
+  
   }
+
+
+
+
+  ////////////////////////////////////////////////////////////
+
+
+
+
+  
 }
