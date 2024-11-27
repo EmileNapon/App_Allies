@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { WebinarService } from '../../services/webinar.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { WebinarEnrollment } from '../../models/webinar-enrollmnet.model';
+import { AuthService } from 'src/app/gestion-utilisateurs/connexion/service-connexion/service-connexion.service';
 
 @Component({
   selector: 'app-webinar-enroll',
@@ -13,36 +14,41 @@ import { WebinarEnrollment } from '../../models/webinar-enrollmnet.model';
 export class WebinarEnrollComponent implements OnInit {
   enrollForm!: FormGroup;
   webinarId!: string; // Récupéré via l'URL
-
+  userInfo: { email: string | null, firstName: string | null, lastName: string | null, profilePic: string | null , id:string|null} | null = null;
   constructor(
     private fb: FormBuilder,
     private webinarService: WebinarService,
     private router: Router,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    this.userInfo = this.authService.getUserInfo();
+    // Récupération de l'ID du webinaire à partir de l'URL
+    this.webinarId = this.route.snapshot.params['id'];
+    
     this.enrollForm = this.fb.group({
-      fullName: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
+      firstName: [{ value:this.userInfo?.firstName || '',disabled: true }],
+      lastName: [{ value:this.userInfo?.lastName || '', disabled: true }],
+      email:[{ value: this.userInfo?.email || '', disabled: true }],
+      whatsapp: ['', [Validators.required, Validators.email]],
       acceptTerms: [false, Validators.requiredTrue]
     });
-
-    // Récupération de l'ID du webinaire à partir de l'URL
-    this.webinarId = this.route.snapshot.paramMap.get('id') || '';
   }
 
   onSubmit(): void {
-    if (this.enrollForm.valid) {
+    console.log('////')
+    
       // Préparer les données d'inscription sans générer d'ID ici
-      const webinarEnrollment:  Omit<WebinarEnrollment, 'id'> = {
-        webinarId: this.webinarId,
-        fullName: this.enrollForm.value.fullName,
-        email: this.enrollForm.value.email,
-        registrationDate: new Date(),
+      const webinarEnrollment:  Omit<any, 'id'> = {
+        webinarId: Number(this.webinarId),
+        user:Number(this.userInfo?.id),
+        whatsapp: this.enrollForm.value.whatsapp,
         hasAcceptedTerms: this.enrollForm.value.acceptTerms,
         isConfirmed: true, // Confirmation de l'inscription
+        paymentMethod:'orangeMoney',
         paymentStatus: 'free', // Exemples de valeurs par défaut (ajustables selon le cas)
       };
 
@@ -67,5 +73,8 @@ export class WebinarEnrollComponent implements OnInit {
         }
       });
     }
+    register(_id:number):void{
+      this.router.navigate([`/webinar-enroll/${_id}/incription`]); 
+    }
   }
-}
+

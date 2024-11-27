@@ -72,8 +72,8 @@ const routes: Routes = [
 
 
   { path: 'webinar-list', component: WebinarListComponent },
-  { path: 'webinar-details/:id', component: WebinarDetailsComponent },
-  { path: 'webinar-enroll/:id', component: WebinarEnrollComponent },
+  { path: 'webinar-details/:id/detail', component: WebinarDetailsComponent },
+  { path: 'webinar-enroll/:id/incription', component: WebinarEnrollComponent },
   { path: 'webinar-dashboard', component: WebinarManagementComponent},
 
   {path:'formation',component:ModuleFormationCertificationComponent,children:[

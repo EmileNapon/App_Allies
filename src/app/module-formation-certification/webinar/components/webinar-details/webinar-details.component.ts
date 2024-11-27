@@ -1,7 +1,8 @@
+import { Webinar } from './../../models/webinar.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WebinarService } from '../../services/webinar.service';
-import { Webinar } from '../../models/webinar.model';
+
 
 @Component({
   selector: 'app-webinar-details',
@@ -85,8 +86,7 @@ export class WebinarDetailsComponent implements OnInit {
     }
   }
 
-  register(): void {
-    // Rediriger l'utilisateur vers la page d'inscription avec l'ID du webinaire
-    this.router.navigate(['/webinar-enroll', this.webinarId]);
+  register(_id:number):void{
+    this.router.navigate([`/webinar-enroll/${_id}/incription`]); 
   }
 }

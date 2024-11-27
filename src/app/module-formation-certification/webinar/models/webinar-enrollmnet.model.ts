@@ -1,7 +1,7 @@
 export class WebinarEnrollment {
     id: string; // Identifiant unique de l'inscription
+    user:string |null;
     webinarId: string; // Identifiant du webinaire associé
-    fullName: string; // Nom complet de l'inscrit
     email: string; // Email de l'inscrit
     registrationDate: Date; // Date d'inscription
     hasAcceptedTerms: boolean; // Indique si l'utilisateur a accepté les conditions générales
@@ -11,8 +11,8 @@ export class WebinarEnrollment {
   
     constructor(
       id: string,
+      user:string |null,
       webinarId: string,
-      fullName: string,
       email: string,
       registrationDate: Date,
       hasAcceptedTerms: boolean,
@@ -22,8 +22,8 @@ export class WebinarEnrollment {
       amountPaid?: number
     ) {
       this.id = id;
+      this.user=user
       this.webinarId = webinarId;
-      this.fullName = fullName;
       this.email = email;
       this.registrationDate = registrationDate;
       this.hasAcceptedTerms = hasAcceptedTerms;

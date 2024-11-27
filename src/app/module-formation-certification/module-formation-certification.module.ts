@@ -34,6 +34,10 @@ import { FormationComponent } from './prog-talent/formation/formation.component'
 import { InscriptionPragraTalentComponent } from './prog-talent/formation/formation-detail/inscription-pragra-talent/inscription-pragra-talent.component';
 import { DasbordEtudiantTalentComponent } from './etudiant/dasbord-etudiant-talent/dasbord-etudiant-talent.component';
 import { HeaderPrincipalePourFormationComponent } from './header-footer/header-principal/headerPrincipale';
+import { FormatDatePipe } from './a_pipes/datePipe';
+import{CustomDateTimePipe} from './a_pipes/dateHeurePipe'
+
+
 
 
 @NgModule({
@@ -54,7 +58,7 @@ import { HeaderPrincipalePourFormationComponent } from './header-footer/header-p
     ChapitreComponent,HeaderPrincipalePourFormationComponent,
     
 
-  FormationComponent, FormationDetailComponent, InscriptionPragraTalentComponent,DasbordEtudiantTalentComponent
+  FormationComponent, FormationDetailComponent, InscriptionPragraTalentComponent,DasbordEtudiantTalentComponent, FormatDatePipe, CustomDateTimePipe
   ],
   imports: [
     CommonModule, ReactiveFormsModule,  HttpClientModule, RouterModule, FormsModule,ReactiveFormsModule, 

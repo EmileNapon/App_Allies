@@ -21,6 +21,8 @@ ngOnInit(): void {
   this.loadDomaines();
   this.userInfo = this.authService.getUserInfo();
 }
+
+
 onLogout(): void {
   this.authService.logout();
 }

@@ -79,3 +79,11 @@
 .form-group a:hover {
     text-decoration: underline; /* Souligner le lien au survol */
 }
+/* Titre principal */
+.webinaire-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #FFA500; /* Couleur orange */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }

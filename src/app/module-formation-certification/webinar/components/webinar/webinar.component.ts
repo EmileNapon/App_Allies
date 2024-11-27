@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Webinar } from '../../models/webinar.model';
 import { Router } from '@angular/router';
+import { WebinarService } from '../../services/webinar.service';
 
 @Component({
   selector: 'app-webinar',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class WebinarComponent implements OnInit {
 
 
-  webinars = [
+  webinar = [
     {
       id: 1,
       title: "Les bases de l'IA",
@@ -48,21 +49,38 @@ export class WebinarComponent implements OnInit {
 
 
 
-  @Input() webinar!: any; // Recevoir les données du webinaire en tant qu'entrée
+  // @Input() webinar!: any; // Recevoir les données du webinaire en tant qu'entrée
 
-  constructor(private router: Router) {}
+
+
+  webinars: any[]=[]
+  constructor(private router: Router, private webinarService:WebinarService) {}
 
   ngOnInit(): void {
-    console.log('Webinaire reçu dans WebinarComponent:', this.webinar);
-    console.log('Titre du webinaire reçu :', this.webinar.title);
+    // console.log('Webinaire reçu dans WebinarComponent:', this.webinar);
+    // console.log('Titre du webinaire reçu :', this.webinar.title);
   
-    if (!this.webinar || !this.webinar._id) {
-      console.error("Le webinaire n'a pas été correctement chargé ou l'ID (_id) est manquant.");
-    } else {
-      console.log('ID du webinaire reçu (_id) :', this.webinar._id);
-    }
+    // if (!this.webinar || !this.webinar._id) {
+    //   console.error("Le webinaire n'a pas été correctement chargé ou l'ID (_id) est manquant.");
+    // } else {
+    //   console.log('ID du webinaire reçu (_id) :', this.webinar._id);
+    // }
   }
   
+
+  loadwebinar(): void {
+    this.webinarService.getWebinars().subscribe(
+      (data) => {
+        this.webinars = data;
+        
+      },
+      (error) => {
+        console.error('Erreur lors du chargement des formations:', error);
+      }
+    );
+    
+  }
+
 
 
 

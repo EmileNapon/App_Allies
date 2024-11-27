@@ -3,6 +3,7 @@ import { WebinarService } from '../../services/webinar.service';
 import { Webinar } from '../../models/webinar.model';
 import { WebinarService1 } from '../webinar/service-web';
 import{Webinar1} from '../webinar/interface'
+import { Router } from '@angular/router';
 
 // import { NgxSpinnerService } from "ngx-spinner";
 
@@ -12,37 +13,82 @@ import{Webinar1} from '../webinar/interface'
   styleUrls: ['./webinar-list.component.css']
 })
 export class WebinarListComponent implements OnInit {
-  webinars: any[] = [];
-  webinarData!: Webinar1;
+  
+  webinarr = [
+    {
+      id: 1,
+      title: "Les bases de l'IA",
+      theme: "Intelligence Artificielle",
+      date: "23 Novembre 2024",
+      time: "10:00",
+      format: "Gratuit",
+      image: "assets/images/ai-webinar.jpg",
+    },
+    {
+      id: 2,
+      title: "Introduction aux Systèmes Embarqués",
+      theme: "Systèmes Cyber-Physiques",
+      date: "25 Novembre 2024",
+      time: "14:00",
+      format: "Payant",
+      image: "assets/images/embedded-systems.jpg",
+    },
+    {
+      id: 3,
+      title: "Optimisation des réseaux IoT",
+      theme: "Internet des Objets",
+      date: "28 Novembre 2024",
+      time: "16:00",
+      format: "Gratuit",
+      image: "assets/images/iot-webinar.jpg",
+    },
+  ];
 
-  loading: boolean = true; // Variable pour suivre l'état de chargement
 
-  constructor(
-    // private spinner: NgxSpinnerService
-    private webinarService: WebinarService,private webinarService1: WebinarService1
-    ) {}
+
+
+
+  // @Input() webinar!: any; // Recevoir les données du webinaire en tant qu'entrée
+
+
+
+  webinars: any[]=[]
+  constructor(private router: Router, private webinarService:WebinarService) {}
 
   ngOnInit(): void {
-    // this.spinner.show();
-    this.getWebinars();
-    /////////////////////////////////
-    this.webinarData = this.webinarService1.getWebinarData();
+    this.loadwebinar()
+    // console.log('Webinaire reçu dans WebinarComponent:', this.webinar);
+    // console.log('Titre du webinaire reçu :', this.webinar.title);
+  
+    // if (!this.webinar || !this.webinar._id) {
+    //   console.error("Le webinaire n'a pas été correctement chargé ou l'ID (_id) est manquant.");
+    // } else {
+    //   console.log('ID du webinaire reçu (_id) :', this.webinar._id);
+    // }
+    
   }
+  
 
-  getWebinars(): void {
-    this.loading = true; // Commencer le chargement
+  loadwebinar(): void {
     this.webinarService.getWebinars().subscribe(
-      (data: Webinar[]) => {
+      (data) => {
         this.webinars = data;
-        this.loading = false; // Les données sont chargées, arrêter le chargement
-        console.log('Webinaires récupérés :', this.webinars);
+        console.log(this.webinars)
       },
-      error => {
-        console.error('Erreur lors de la récupération des webinaires', error);
-        this.loading = false; // En cas d'erreur, arrêter le chargement
+      (error) => {
+        console.error('Erreur lors du chargement des formations:', error);
       }
     );
+    
+  }
 
+  VoirDetail(_id:number):void{
+    this.router.navigate([`/webinar-details/${_id}/detail`]); 
+  }
+ 
+  register(_id:number):void{
+    this.router.navigate([`/webinar-enroll/${_id}/incription`]); 
+  }
   
   }
 
@@ -55,4 +101,4 @@ export class WebinarListComponent implements OnInit {
 
 
   
-}
+
