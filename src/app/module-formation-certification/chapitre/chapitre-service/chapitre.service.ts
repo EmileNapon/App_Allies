@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
 export class ChapitreService {
 
   constructor( private http: HttpClient ) { }
-  private coursUrl= "http://127.0.0.1:8000/fidalli/chapitre/list_chapitres";
+  private chapitreUrl= "http://127.0.0.1:8000/fidalli/chapitre/list_chapitres";
   private contenuUrl= "http://127.0.0.1:8000/fidalli/contenus/list_contenus";
 
 
   getChapitre(): Observable<any[]> {
-    return this.http.get<any[]>(this.coursUrl);
+    return this.http.get<any[]>(this.chapitreUrl);
   
 }
 getContenu(): Observable<any[]> {

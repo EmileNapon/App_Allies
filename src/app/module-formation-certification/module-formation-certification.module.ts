@@ -36,6 +36,7 @@ import { DasbordEtudiantTalentComponent } from './etudiant/dasbord-etudiant-tale
 import { HeaderPrincipalePourFormationComponent } from './header-footer/header-principal/headerPrincipale';
 import { FormatDatePipe } from './a_pipes/datePipe';
 import{CustomDateTimePipe} from './a_pipes/dateHeurePipe'
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 
@@ -61,7 +62,7 @@ import{CustomDateTimePipe} from './a_pipes/dateHeurePipe'
   FormationComponent, FormationDetailComponent, InscriptionPragraTalentComponent,DasbordEtudiantTalentComponent, FormatDatePipe, CustomDateTimePipe
   ],
   imports: [
-    CommonModule, ReactiveFormsModule,  HttpClientModule, RouterModule, FormsModule,ReactiveFormsModule, 
+    CommonModule, ReactiveFormsModule,  HttpClientModule, RouterModule, FormsModule,ReactiveFormsModule, CKEditorModule
   ]
 })
 export class ModuleFormationCertificationModule { }

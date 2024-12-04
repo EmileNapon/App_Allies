@@ -83,7 +83,6 @@ export class GestionnaireChapitreComponent implements OnInit {
     this.chapitreService.getChapitre().subscribe(data => {
       this.__chapitreGestionnaire__ = data;
       this.filterMatieresGestionnaire()
-      console.log( this.idcoursGestionnaireId)
     });
   }
 

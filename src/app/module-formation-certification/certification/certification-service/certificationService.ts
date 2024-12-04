@@ -12,7 +12,11 @@ import { Observable } from 'rxjs';
 export class CertificationService {
 
   ListCertificat:any[]=[]
-  private ContenuCertificatUrl = 'http://localhost:9999/ContenuCertificat';
+  //private ContenuCertificatUrl = 'http://localhost:9999/ContenuCertificat';
+  private ContenuCertificatUrl = 'http://127.0.0.1:8000/fidalli/certifications';
+  private CoursUseCertification = 'http://127.0.0.1:8000/fidalli/CoursUseCertification/'
+  private coursUrl= "http://localhost:8000/fidalli/cours/list_cours";
+
   private ChapitreUrl = 'http://localhost:9999/Chapitre';
   private ArticleUrl = 'http://localhost:9999/Article';
   private VideoUrl = 'http://localhost:9999/Video';
@@ -23,6 +27,11 @@ constructor( private http: HttpClient ) { }
 getCertificat(): Observable<any[]> {
   return this.http.get<any[]>(this.ContenuCertificatUrl);
 }
+
+getCoursUseCertification() : Observable<any[]>{
+  return this.http.get<any[]>(this.CoursUseCertification); 
+}
+
 
 getCertificatChapitre() : Observable<any[]>{
   return this.http.get<any[]>(this.ChapitreUrl); 
@@ -41,4 +50,29 @@ getCertificatPodcast() : Observable<any[]>{
 }
 
 
+
+
+/////////////////////////////////////////////////////////////
+
+
+getCours(): Observable<any[]> {
+  return this.http.get<any[]>(this.coursUrl);
+}
+
+private chapitreUrl= "http://127.0.0.1:8000/fidalli/chapitre/list_chapitres";
+
+
+
+getChapitre(): Observable<any[]> {
+  return this.http.get<any[]>(this.chapitreUrl);
+}
+
+
+
+private contenuUrl= "http://127.0.0.1:8000/fidalli/contenus/list_contenus";
+
+getContenu(): Observable<any[]> {
+return this.http.get<any[]>(this.contenuUrl);
+
+}
 }

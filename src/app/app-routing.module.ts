@@ -95,12 +95,14 @@ const routes: Routes = [
   {path:'domaines/:domaineId/modules', component:ModuleComponent},  
   {path:'modules/:coursId/cours', component:CoursComponent},
   {path:'cours/:chapitreId/chapitres', component:ChapitreComponent},
+
   {path:'programme-talent/:programmeId/programme', component:ChapitreComponent}, 
   {path:'certification', component:CertificationComponent},
   {path:'certification/:idCertification/certification', component:CertificationContenuComponent},
   {path:'certification', component:CertificationComponent},
   {path:'certification/:idCertification/certification', component:CertificationContenuComponent},
   {path:'parcours/:idCertificationEParcours1', component:certificationContenuParcours1Component},
+
   {path:'usersPages',component:GestionUtilisateursComponent,children:[
     {path:'register', component:RegistrationComponent}, 
     {path:'login', component:ConnexionComponent},

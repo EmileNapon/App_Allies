@@ -18,11 +18,11 @@
     <div class="card" style='border:none; '>
       <div class="card-body">
         
-        <h2><p class='col-md-12' style='background-color:rgb(2, 51, 104);color:white'> {{filtredCertificat[0].titre}}</p></h2>
+        <h2><p class='col-md-12' style='background-color:rgb(2, 51, 104);color:white'> {{filtredCertificat[0].title}}</p></h2>
         <span><i class="bi bi-list" ></i><span style='padding-left:5px'>Parcours</span></span> <span ><i class="bi bi-clock" style='padding-left:20px'></i><span  style='padding-left:5px'>{{filtredCertificat[0].duree}}</span></span>
         <br/> <br/> 
         <h4 class="card-title">Presentation</h4>
-        <p style='font-size:85%;'>La gestion des actifs informatiques (IT Asset Management) est un élément important de la stratégie des Directions informatiques. L’ITAM permet de maîtriser les coûts des logiciels, des matériels et des services cloud de l’entreprise. Ce budget ne cessant d’augmenter, il est indispensable pour les entreprises de les gérer avec attention. Ce cours est basé sur les meilleures pratiques de gestion des services informatiques (ITIL4), sur les normes ISO 55 000 et ISO 19 770.</p>
+        <p style='font-size:85%;'>{{filtredCertificat[0].description}}</p>
         <h4 class="card-title">Objectifs</h4>
         <br/> 
 
@@ -32,43 +32,67 @@
          
           <br/> <br/> 
         <h4 class="card-title">Contenu</h4>
-        <div *ngFor='let chapitre of filtredCertificatChapitre '>
+        <div *ngFor='let cours of filtredCertificatCours '>
           <hr>
           <div >
-            <button style='border:none' (click)="onSelectAfficherChapitre(chapitre.id)">
-              Chapitre {{chapitre.id}} -- {{chapitre.titre}}
-              <span *ngIf="openCoursId === chapitre.id"></span>
-              <span *ngIf="openCoursId !== chapitre.id"></span>
+            <button style='border:none' (click)="onSelectAfficherChapitre(cours.id)">
+              Cours {{cours.id}} -- {{cours.nom_cours}}
+              
+              <span *ngIf="openCoursId === cours.id"></span>
+              <span *ngIf="openCoursId !== cours.id"></span>
+              
             </button>
             <br/>
             <div style='text-align:left'>         
-              <div *ngIf="openCoursId === chapitre.id">
-                  <div *ngFor='let x of filteredCertificatsArticle'  >
-                    <button *ngIf="chapitre.id===x.idChapitre" (click)='onSelectCertificat(chapitre.id)' style='border:none'><i class="bi bi-file-earmark-plus-fill" style='color:#3e576e;'></i><span style='padding:5px;font-size:90%;'>Article | {{x.titreArticle}}</span></button>
+              <div *ngIf="openCoursId === cours.id">              
+
+                
+              
+                  <div *ngFor='let chapitre of filtreListCertificatChapitre'  >
+                    <br/>
+                    
+                    <button *ngIf="cours.id===chapitre.cours" (click)='onSelectCertificat(chapitre.id)' style='border:none'><i class="bi bi-file-earmark-plus-fill" style='color:#3e576e;'></i><span style='padding:5px;font-size:90%;'>Chapitre {{chapitre.id}} -- {{chapitre.titre}}</span>
+                    </button>
+                  
                   </div>
+                
+                <!--
+                  <div *ngFor='let chapitre of filtreListCertificatChapitre'  >
+                    <button *ngIf="cours.id===chapitre.cours" (click)='onSelectCertificat(chapitre.id)' style='border:none'><i class="bi bi-file-earmark-plus-fill" style='color:#3e576e;'></i><span style='padding:5px;font-size:90%;'>Article | {{x.titreArticle}}</span></button>
+                  </div>
+                -->
               </div>
                       
-              <div *ngIf="openCoursId === chapitre.id">
+              <div *ngIf="openCoursId === cours.id">
+                <!--
                 <div *ngFor='let x of filteredCertificatsVideo'>
                   <button *ngIf="chapitre.id===x.idChapitre" (click)='onSelectCertificat(chapitre.id)' style='border:none'><i class="bi bi-camera-video-fill" style='color:#3e576e;'></i> <span style='padding:5px;font-size:90%;'>Video | {{x.titreVideo}}</span></button>
                 </div>
+              -->
               </div>
-              <div *ngIf="openCoursId === chapitre.id">
+              <div *ngIf="openCoursId === cours.id">
+                <!--
                  <div *ngFor='let x of filteredCertificatPosdcast'>
                   <button *ngIf="chapitre.id===x.idChapitre" (click)='onSelectCertificat(chapitre.id)' style='border:none'><i class="bi bi-play-fill"  style='color:#3e576e;'></i><span style='padding:5px;font-size:90%;'>Posdcast | {{x.titrePodcast}}</span></button>
                 </div>
+              -->
               </div>
-              <div *ngIf="openCoursId === chapitre.id">
+              <div *ngIf="openCoursId === cours.id">
+                <!--
                 <div *ngFor='let x of filteredCertificatPosdcast'>
                   <button *ngIf="chapitre.id===x.idChapitre" style='border:none'><i class="bi bi-clock-fill"  style='color:#3e576e;'></i><span style='padding:5px;font-size:90%;'>Evaluation</span></button>
-              </div>   
+              </div> 
+            -->  
             </div>
 
             </div>
                            
           </div>
-          
+        
         </div>
+
+
+        
         <br/><hr>
        <button class='disabled' aria-disabled="true" style='border:none;'><i class="bi bi-file-earmark-lock" ></i>Quiz final</button>
         <hr/>

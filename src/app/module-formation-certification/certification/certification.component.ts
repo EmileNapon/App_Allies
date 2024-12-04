@@ -29,6 +29,7 @@ export class CertificationComponent implements OnInit{
   getCertification(){
     this.CertificatService.getCertificat().subscribe(data => {
       this.ListCertificat = data;
+      console.log(this.ListCertificat)
     });
   }
 
