@@ -65,7 +65,7 @@ export class certificationContenuParcours1Component implements OnInit{
   filtreListCertificatChapitre:any[]=[]
   certificatContenu:any[]=[]
   filtrecertificatContenu:any[]=[]
-  
+  currentIndex = 0;
 
 
 
@@ -128,24 +128,32 @@ export class certificationContenuParcours1Component implements OnInit{
       this.CertificatService.getChapitre().subscribe(data => {
         this.ListCertificatChapitre = data;
         this.filtreListCertificatChapitre = this.ListCertificatChapitre.filter(chapitre=> this.filtredCertificatCours.some(filtredCertificatCours=>filtredCertificatCours.id==chapitre.cours));
-        this.getCertificationContenu()
-      });
-    }
-
-    getCertificationContenu(){
-      this.CertificatService.getContenu().subscribe(data => {
-        this.certificatContenu = data;
-        this.filtrecertificatContenu = this.certificatContenu.filter(contenu=>contenu.chapitre==this.certificatId).map(contenu => {
-          // Supprimer les balises <p> et </p> avant la sanitisation
-          const descriptionSansP = contenu.description.replace(/<\/?p>/g, '');
-          const sous_titreSansP = contenu.sous_titre.replace(/<\/?p>/g, '');
-          return {
-            ...contenu,sous_titre:DOMPurify.sanitize(sous_titreSansP),
-            description: DOMPurify.sanitize(descriptionSansP)
-          };
+  
+  
+        this.CertificatService.getContenu().subscribe(data => {
+          this.certificatContenu = data;
+          this.filtrecertificatContenu = this.certificatContenu.filter(contenu=> this.filtreListCertificatChapitre.some(filtreListCertificatChapitre=>filtreListCertificatChapitre.id==contenu.chapitre))
+          //this.filtrecertificatContenu = this.certificatContenu.filter(contenu=>contenu.chapitre==this.certificatId)
+          .map(contenu => {
+            // Supprimer les balises <p> et </p> avant la sanitisation
+            const descriptionSansP = contenu.description.replace(/<\/?p>/g, '');
+            const sous_titreSansP = contenu.sous_titre.replace(/<\/?p>/g, '');
+           
+  
+            return {
+              ...contenu,sous_titre:DOMPurify.sanitize(sous_titreSansP),
+              description: DOMPurify.sanitize(descriptionSansP)
+            };
+          });
+          console.log('pppppppp',this.filtrecertificatContenu)
+          
         });
       });
+  
+      
     }
+
+
 
 
     // Contenus:any[]=[]
@@ -301,4 +309,23 @@ export class certificationContenuParcours1Component implements OnInit{
 //             this.router.navigate([`/page/${nextPage}/pageContenu`]);
 //           } 
 //       }}
+
+
+
+nextChapter() {
+  if (this.currentIndex < this.filtreListCertificatChapitre.length - 1) {
+    this.currentIndex++;
+  }
+}
+
+// Obtenir le chapitre actuel
+get currentChapitre() {
+  return this.filtreListCertificatChapitre[this.currentIndex];
+}
+
+prevChapter() {
+  if (this.currentIndex > 0) {
+    this.currentIndex--;
+  }
+}
  }

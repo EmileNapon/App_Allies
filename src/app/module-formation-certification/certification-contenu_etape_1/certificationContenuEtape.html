@@ -1,4 +1,4 @@
-<body>
+
     
   <app-headerPrincipale></app-headerPrincipale>
 
@@ -6,42 +6,65 @@
 
 
 
-
-<div class='container'>
-    <div class="row " >
-      <h2><p class='col-md-12' style='background-color:rgb(2, 51, 104);color:white'> {{filtredCertificat[0].title}}</p></h2>
-      <br/> <br/> 
-      <p>{{filtredCertificatCours[0].nom_cours}}<p> 
-
-        <div  class="card-body" *ngFor='let contenu of filtrecertificatContenu' >
-
-
-        <div class='container'>
-          <div class="row">
-            <div class="col-sm-10 mb-10 mb-sm-0">
-              <div class="card" style='border:none; '>
-                <div class="card-body">
-                    <br/> <br/> 
-                  <span style='font-size:110%;' >
-                    <h1>
-                      {{contenu.sous_titre}}</h1>
-                    <br/>        
-                    <div >
-                      <h3 >{{contenu.id}}. <span [innerHTML]="contenu.sous_titre"></span></h3>
-                      <p [innerHTML]="contenu.description">
-                          {{contenu.description}}
-                        </p>          
+  <div class="container main-content">
+    <div class="row">
+      <!-- Titre principal -->
+      <h2 class="main-header">{{filtredCertificat[0].title}}</h2>
+      
+      <!-- Contenu principal -->
+      <div class="container main-content" *ngIf="filtreListCertificatChapitre.length > 0; else noChapters">
+        <section class="course-details" *ngFor="let chapitre of filtreListCertificatChapitre; let i = index">
+          <div *ngIf="i === currentIndex">
+            <!-- Titre du chapitre -->
+            <h2>{{ chapitre.id }} - {{ chapitre.titre }}</h2>
+  
+            <ul class="objectives-list">
+              <li class="course-section">
+                <section>
+                  <hr>
+                  <ol class="course-content" *ngFor="let contenu of filtrecertificatContenu">
+                    <li class="course-item completed" *ngIf="chapitre.id === contenu.chapitre">
+                      <span class="status-icon" title="Bravo, vous avez terminé ce chapitre !">
+                        <i class="icon-check2"></i>
+                      </span>
+                      <h4>{{ contenu.id }}. {{ contenu.sous_titre }}</h4>
+                    </li>
+                    <div *ngIf="chapitre.id === contenu.chapitre">
+                      <p>{{ contenu.description }}</p>
                     </div>
-                      <br/><br/>                
-                  </span>
-                </div>
-              </div>
-            </div>
+                  </ol>
+  
+                  <!-- Quiz -->
+                  <div class="course-quiz">
+                    <ul>
+                      <li><a>Quiz : Préparer le terrain pour Angular</a></li>
+                    </ul>
+                  </div>
+                </section>
+              </li>
+            </ul>
           </div>
-          </div>
-
-
+        </section>
+  
+        <!-- Boutons de navigation -->
+        <div class="actions">
+          <button class="btn btn-secondary" (click)="prevChapter()" [disabled]="currentIndex === 0">
+            Retour
+          </button>
+          <button class="btn btn-primary" (click)="nextChapter()" [disabled]="currentIndex === filtreListCertificatChapitre.length - 1">
+            Continuer
+          </button>
         </div>
+      </div>
+  
+      <!-- Message si aucun chapitre -->
+      <ng-template #noChapters>
+        <p>Aucun chapitre disponible.</p>
+      </ng-template>
+    </div>
+  </div>
+
+    
 
         <!--<div class="col-sm-4 mb-6 mb-sm-0"  >
           <div class="card" style='border:none'>
@@ -80,7 +103,3 @@
           </div>
         </div>
         -->
-    </div>
-</div>
-   
-    </body>

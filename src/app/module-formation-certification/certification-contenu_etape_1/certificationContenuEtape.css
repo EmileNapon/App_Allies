@@ -1,46 +1,93 @@
 
 
-/* Application de la police */
-body {
-    font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-    color: #333; /* Couleur de texte par défaut */
-    background-color: #f5f5f5; /* Couleur de fond */
-    font-size:90%;
+  .main-header {
+    background-color: rgb(2, 51, 104);
+    color:  #fff;
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 20px;
+    max-width: 1100px;
+    margin: 20px auto;
   }
-  
-  /* Couleurs des liens */
-  a {
-    color: #007bff; /* Couleur bleue pour les liens */
-  }
-  
-  a:hover {
-    color: #0056b3; /* Couleur bleue plus foncée pour les liens au survol */
-  }
-  
-  /* Couleurs des titres */
-  h1, h2, h3, h4, h5, h6 {
-    color: #222; /* Couleur légèrement plus foncée pour les titres */
-  }
-  
-  nav a {
-    margin: 0 2px;
-    text-decoration: none;
-    color: #000;
-  
-  }
-  
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  /* Assurez-vous également que votre champ de saisie est bien stylé en blanc */
-  input[type="text"] {
-    background-color: #fff;
-    color: #000; /* Couleur du texte du champ de saisie */
+
+  .main-content {
+    max-width: 1100px;
+
+    
+    
+}
+
+  .course-details h2 {
+    color: #023368;
+    margin-bottom: 10px;
+  }
+
+  .objectives-list {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .course-content {
+    list-style-type: decimal;
+    margin-left: 20px;
+  }
+
+  .course-item {
+    margin: 10px 0;
+    padding: 10px;
+    border-left: 3px solid #023368;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+  }
+
+  .course-item.completed {
+    border-left-color: #28a745;
+  }
+
+  .status-icon {
+    margin-right: 10px;
+    color: #28a745;
+    font-size: 1.2rem;
+  }
+
+  .course-quiz ul {
+    padding-left: 20px;
+    margin-top: 20px;
+  }
+
+  .course-quiz a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+  }
+
+  .btn-secondary {
+    background-color: #cccccc;
+    color: black;
+    border: none;
+  }
+
+  .btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
   }

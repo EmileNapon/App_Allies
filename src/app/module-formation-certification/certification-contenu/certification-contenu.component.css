@@ -1,38 +1,211 @@
+        /* Body & Global Styles */
+        body {
+          font-family: 'Poppins', sans-serif;
+          background-color: #f4f4f8;
+          color: #333;
+          line-height: 1.6;
+          margin: 0;
+          padding: 0;
+      }
+ 
+
+      .main-header {
+        background-color: rgb(2, 51, 104);
+        color:  #fff;
+        text-align: center;
+        padding: 15px;
+        margin-bottom: 20px;
+      }
+    
+      .main-content {
+          max-width: 1100px;
+          margin: 20px auto;
+          background: #fff;
+          padding: 30px;
+          border-radius: 12px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Header */
+      .header h1 {
+          text-align: center;
+          color: #5a47d6;
+          font-size: 2.5rem;
+          font-weight: 600;
+          margin-bottom: 20px;
+      }
+
+      /* Video Section */
+      .course-introduction iframe {
+          width: 100%;
+          height: 450px;
+          border-radius: 10px;
+          margin-bottom: 20px;
+      }
+
+      .course-description {
+          font-size: 1.1rem;
+          margin-top: 10px;
+          color: #555;
+      }
+
+      .section-container {
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+    }
+
+    /* Style spécifique pour chaque section */
+    .objectives {
+        background-color: #f5f5f5;
+    }
+
+    .prerequisites {
+        background-color: #f9f9f9;
+    }
+
+    /* Titre des sections */
+    .section-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #000000;
+        margin-bottom: 10px;
+    }
+
+    /* Liste des contenus */
+    .section-content {
+        font-size: 1rem;
+        color: #000000;
+        line-height: 1.6;
+    }
+
+    /* Liens */
+    .section-content a {
+        text-decoration: underline;
+        color: #0000ee;
+    }
+
+    /* Boutons */
+    .actions {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 5px;
+    }
+
+    .btn-primary {
+        background-color: #6c63ff;
+        border: none;
+        color: #ffffff;
+    }
+
+    .btn-secondary {
+        background-color: transparent;
+        border: none;
+        color: #6c63ff;
+        text-decoration: underline;
+    }
+
+      
+     
+
+      .course-navigation {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+    }
+
+    /* Style pour chaque section */
+    .course-section {
+        margin-bottom: 30px;
+    }
+
+    /* Titre des chapitres */
+    .course-section h3 {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #000000;
+        margin-bottom: 10px;
+    }
+
+    /* Liste des contenus */
+    .course-content {
+        padding-left: 15px;
+        margin-bottom: 10px;
+    }
+
+    .course-item h4 a {
+        font-size: 1rem;
+        font-weight: normal;
+        color: #000000;
+        text-decoration: none;
+    }
+
+    /* Style pour les quiz */
+    .course-quiz {
+        margin-top: 10px;
+    }
+
+    .course-quiz a {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #000000;
+        text-decoration: underline;
+    }
 
 
-/* Application de la police */
-body {
-  font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  color: #333; /* Couleur de texte par défaut */
-  background-color: #f5f5f5; /* Couleur de fond */
-  font-size:90%;
-}
-
-/* Couleurs des liens */
-a {
-  color: #007bff; /* Couleur bleue pour les liens */
-}
-
-a:hover {
-  color: #0056b3; /* Couleur bleue plus foncée pour les liens au survol */
-}
-
-/* Couleurs des titres */
-h1, h2, h3, h4, h5, h6 {
-  color: #222; /* Couleur légèrement plus foncée pour les titres */
-}
 
 
 
 
-button{
-  background-color: white;
-}
-nav a {
-  margin: 0 2px;
-  text-decoration: none;
-  color: #000;
-
-}
 
 
+
+
+      /* Buttons */
+      .actions {
+          text-align: center;
+          margin-top: 20px;
+      }
+
+      .btn {
+          padding: 12px 25px;
+          border-radius: 30px;
+          font-size: 1rem;
+          font-weight: 500;
+      }
+
+      .btn-secondary {
+          background-color: #ddd;
+          color: #555;
+          border: none;
+      }
+
+      .btn-secondary:hover {
+          background-color: #ccc;
+      }
+
+      .btn-primary {
+          background-color: #5a47d6;
+          border: none;
+          color: white;
+      }
+
+      .btn-primary:hover {
+          background-color: #4739b3;
+      }
+
+      /* Footer */
+      .footer {
+          text-align: center;
+          margin-top: 40px;
+          color: #777;
+          font-size: 0.9rem;
+      }

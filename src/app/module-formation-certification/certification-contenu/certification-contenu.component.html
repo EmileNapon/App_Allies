@@ -1,118 +1,70 @@
-
-    
-           
-    
-    
-    
+<app-headerPrincipale></app-headerPrincipale>
 <body>
-    
+    <div class="container main-content">
+        <header class="header">
+            <h2 class="main-header">{{filtredCertificat[0].title}}</h2>
+        </header>
 
-
-
-  <app-headerPrincipale></app-headerPrincipale>
-
-
-<div class='container'>
-<div class="row">
-  <div class="col-sm-9 mb-9 mb-sm-0">
-    <div class="card" style='border:none; '>
-      <div class="card-body">
-        
-        <h2><p class='col-md-12' style='background-color:rgb(2, 51, 104);color:white'> {{filtredCertificat[0].title}}</p></h2>
-        <span><i class="bi bi-list" ></i><span style='padding-left:5px'>Parcours</span></span> <span ><i class="bi bi-clock" style='padding-left:20px'></i><span  style='padding-left:5px'>{{filtredCertificat[0].duree}}</span></span>
-        <br/> <br/> 
-        <h4 class="card-title">Presentation</h4>
-        <p style='font-size:85%;'>{{filtredCertificat[0].description}}</p>
-        <h4 class="card-title">Objectifs</h4>
-        <br/> 
-
-          <div style='font-size:85%;'>Connaître les domaines clés de l'ITAM ainsi que leurs interactions dans un environnement informatique dynamique</div>
-          <div style='font-size:85%;'>Connaître les domaines clés de l'ITAM ainsi que leurs interactions dans un environnement informatique dynamique</div>
-          <div style='font-size:85%;'>Connaître les domaines clés de l'ITAM ainsi que leurs interactions dans un environnement informatique dynamique</div>
-         
-          <br/> <br/> 
-        <h4 class="card-title">Contenu</h4>
-        <div *ngFor='let cours of filtredCertificatCours '>
-          <hr>
-          <div >
-            <button style='border:none' (click)="onSelectAfficherChapitre(cours.id)">
-              Cours {{cours.id}} -- {{cours.nom_cours}}
-              
-              <span *ngIf="openCoursId === cours.id"></span>
-              <span *ngIf="openCoursId !== cours.id"></span>
-              
-            </button>
-            <br/>
-            <div style='text-align:left'>         
-              <div *ngIf="openCoursId === cours.id">              
-
-                
-              
-                  <div *ngFor='let chapitre of filtreListCertificatChapitre'  >
-                    <br/>
-                    
-                    <button *ngIf="cours.id===chapitre.cours" (click)='onSelectCertificat(chapitre.id)' style='border:none'><i class="bi bi-file-earmark-plus-fill" style='color:#3e576e;'></i><span style='padding:5px;font-size:90%;'>Chapitre {{chapitre.id}} -- {{chapitre.titre}}</span>
-                    </button>
-                  
-                  </div>
-                
-                <!--
-                  <div *ngFor='let chapitre of filtreListCertificatChapitre'  >
-                    <button *ngIf="cours.id===chapitre.cours" (click)='onSelectCertificat(chapitre.id)' style='border:none'><i class="bi bi-file-earmark-plus-fill" style='color:#3e576e;'></i><span style='padding:5px;font-size:90%;'>Article | {{x.titreArticle}}</span></button>
-                  </div>
-                -->
-              </div>
-                      
-              <div *ngIf="openCoursId === cours.id">
-                <!--
-                <div *ngFor='let x of filteredCertificatsVideo'>
-                  <button *ngIf="chapitre.id===x.idChapitre" (click)='onSelectCertificat(chapitre.id)' style='border:none'><i class="bi bi-camera-video-fill" style='color:#3e576e;'></i> <span style='padding:5px;font-size:90%;'>Video | {{x.titreVideo}}</span></button>
-                </div>
-              -->
-              </div>
-              <div *ngIf="openCoursId === cours.id">
-                <!--
-                 <div *ngFor='let x of filteredCertificatPosdcast'>
-                  <button *ngIf="chapitre.id===x.idChapitre" (click)='onSelectCertificat(chapitre.id)' style='border:none'><i class="bi bi-play-fill"  style='color:#3e576e;'></i><span style='padding:5px;font-size:90%;'>Posdcast | {{x.titrePodcast}}</span></button>
-                </div>
-              -->
-              </div>
-              <div *ngIf="openCoursId === cours.id">
-                <!--
-                <div *ngFor='let x of filteredCertificatPosdcast'>
-                  <button *ngIf="chapitre.id===x.idChapitre" style='border:none'><i class="bi bi-clock-fill"  style='color:#3e576e;'></i><span style='padding:5px;font-size:90%;'>Evaluation</span></button>
-              </div> 
-            -->  
-            </div>
-
-            </div>
-                           
-          </div>
-        
+        <div class="course-introduction">
+            <iframe 
+                id="video_Player_1" 
+                src="//player.vimeo.com/video/943227703?color=7451eb" 
+                frameborder="0" 
+                class="video-player" 
+                title="Vidéo introductive" 
+                allowfullscreen>
+            </iframe>
+            <h2>Presentation</h2>
+            <p class="course-description">
+                {{filtredCertificat[0].description}}
+            </p>
         </div>
 
+        <section class="course-details">
+            <h2>Objectifs</h2>
+            <ul class="objectives-list">
+                {{filtredCertificat[0].objectif}}
+            </ul>
+        </section>
 
-        
-        <br/><hr>
-       <button class='disabled' aria-disabled="true" style='border:none;'><i class="bi bi-file-earmark-lock" ></i>Quiz final</button>
-        <hr/>
-       <br/><br/>
+        <aside class="prerequisites">
+            <h2>Prérequis</h2>
+            <p>{{filtredCertificat[0].prerequisites}}</p>
+        </aside>
 
-       <h4 class="card-title"> Les prerequis</h4>
-      </div>
+        <div class="course-navigation">
+            <ul class="course-list">
+                <li class="course-section" *ngFor="let chapitre of filtreListCertificatChapitre">
+                    <section>
+                        <h2>Partie {{chapitre.id}} - {{chapitre.titre}}</h2>
+                        <hr>
+                        <div class="course-content" *ngFor="let contenu of filtrecertificatContenu">
+                            <div class="course-item" *ngIf="chapitre.id == contenu.chapitre">
+                                <h4>
+                                    <a>{{contenu.id}}. {{contenu.sous_titre}}</a>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="course-quiz">
+                            <ul>
+                                <li><a href="#">Quiz : {{chapitre.titre}}</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                </li>
+            </ul>
+        </div>
+
+        <div class="actions">        
+            <button class="btn btn-primary" (click)="onSelectCertificat(certificatIdDom)">Continuer le cours</button>
+        </div>
     </div>
-  </div>
-  <div class="col-sm">
-    <div class="card" style='border:none;'>
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
+
+    <footer class="footer">
+        <p>&copy; 2024 - Plateforme de Cours Angular</p>
+    </footer>
 </body>
+
 
 
 

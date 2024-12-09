@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CertificationService } from '../certification/certification-service/certificationService';
 
+import DOMPurify from 'dompurify';
+
 @Component({
   selector: 'app-certification-contenu',
   templateUrl: './certification-contenu.component.html',
@@ -25,7 +27,8 @@ export class CertificationContenuComponent implements OnInit {
   ListCertificatChapitre:any[]=[]
   filtreListCertificatChapitre:any[]=[]
   
-
+  certificatContenu:any[]=[]
+  filtrecertificatContenu:any[]=[]
 
 
   //-------------------------//
@@ -38,6 +41,7 @@ export class CertificationContenuComponent implements OnInit {
   // ListArticle:any[]=[]
   // filtredCertificatArticle:any[]=[]
  certificatId1: string | null = null;
+ certificatIdDom!: number
 
   //---------------------------------//
 
@@ -45,6 +49,7 @@ export class CertificationContenuComponent implements OnInit {
   
   ngOnInit(): void {
     this.certificatId = this.route.snapshot.paramMap.get('idCertification');
+    this.certificatIdDom=Number(this.certificatId)
     this.getCertification()
     this.getCoursUseCertification()
     
@@ -52,6 +57,7 @@ export class CertificationContenuComponent implements OnInit {
     // this.getCertificationChapitre()
     // this.getCertificationArticle()
     
+
 
    
     }
@@ -94,7 +100,29 @@ export class CertificationContenuComponent implements OnInit {
     this.CertificatService.getChapitre().subscribe(data => {
       this.ListCertificatChapitre = data;
       this.filtreListCertificatChapitre = this.ListCertificatChapitre.filter(chapitre=> this.filtredCertificatCours.some(filtredCertificatCours=>filtredCertificatCours.id==chapitre.cours));
+
+
+      this.CertificatService.getContenu().subscribe(data => {
+        this.certificatContenu = data;
+        this.filtrecertificatContenu = this.certificatContenu.filter(contenu=> this.filtreListCertificatChapitre.some(filtreListCertificatChapitre=>filtreListCertificatChapitre.id==contenu.chapitre))
+        //this.filtrecertificatContenu = this.certificatContenu.filter(contenu=>contenu.chapitre==this.certificatId)
+        .map(contenu => {
+          // Supprimer les balises <p> et </p> avant la sanitisation
+          const descriptionSansP = contenu.description.replace(/<\/?p>/g, '');
+          const sous_titreSansP = contenu.sous_titre.replace(/<\/?p>/g, '');
+         
+
+          return {
+            ...contenu,sous_titre:DOMPurify.sanitize(sous_titreSansP),
+            description: DOMPurify.sanitize(descriptionSansP)
+          };
+        });
+        console.log('pppppppp',this.filtrecertificatContenu)
+        
+      });
     });
+
+    
   }
  
 
@@ -103,8 +131,7 @@ export class CertificationContenuComponent implements OnInit {
 
 
 
-
-onSelectCertificat(idCertificationEParcours1: string): void {
+onSelectCertificat(idCertificationEParcours1: number): void {
   this.router.navigate([`/parcours/${idCertificationEParcours1}`]); // Redirection vers la page des matières du domaine sélectionné
 }
 
