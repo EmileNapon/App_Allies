@@ -60,6 +60,7 @@ export class certificationContenuParcours1Component implements OnInit{
   filtreCoursUseCertification: any[]=[]
 
   cours: any[] = [];
+  options: any[]=[]
 
   ListCertificatChapitre:any[]=[]
   filtreListCertificatChapitre:any[]=[]
@@ -68,10 +69,11 @@ export class certificationContenuParcours1Component implements OnInit{
   currentIndex = 0;
 
 
+// declaration des variables de question-response
 
-
-
-
+questions: any[] = [];
+filtreQuestion:any[]=[]
+reponses: { question: number; choix: number }[] = [];
   //-------------------------//
   // ListCertificatArticle:any[]=[]
   // ListCertificatPosdcast:any[]=[]
@@ -96,25 +98,26 @@ export class certificationContenuParcours1Component implements OnInit{
     // this.getCertificationArticle()
     
     // this.getCertificationContenu()
-   
-    }
+    this.CertificatService.getCoursUseCertification().subscribe(data => {
+      this.coursUseCertification = data;
+    });
+    
+}
 
-    getCertification(){
+    //liste certificats recuperation
+
+    getCertification():void{
       this.CertificatService.getCertificat().subscribe(data => {
         this.ListCertificat = data;
         this.filtredCertificat = this.ListCertificat.filter(certificat=> certificat.id==this.certificatId);
       });
-   
-      
+
     }
-
-
-    
+   
     getCoursUseCertification(){
       this.CertificatService.getCoursUseCertification().subscribe(data => {
         this.coursUseCertification = data;
         this.filtreCoursUseCertification = this.coursUseCertification.filter(coursUseCertification=> coursUseCertification.certification==this.certificatId);
-
         this.CertificatService.getCours().subscribe(data => {
           this.cours = data;
           this.filtredCertificatCours = this.cours.filter(cours=> this.filtreCoursUseCertification.some(filtreCoursUseCertification=>filtreCoursUseCertification.cours==cours.id));
@@ -145,13 +148,48 @@ export class certificationContenuParcours1Component implements OnInit{
               description: DOMPurify.sanitize(descriptionSansP)
             };
           });
-          console.log('pppppppp',this.filtrecertificatContenu)
-          
+          console.log('pppppppp',this.filtrecertificatContenu) 
+
+          // Assurez-vous que les questions sont bien associées
+          this.CertificatService.getQuestion().subscribe(data => {
+            this.questions = data
+            console.log('|||||||||||||||||||||||||||||||||||||', this.filtreListCertificatChapitre)  
+            //this.filtreQuestion= this.questions.filter(question=>question.id==this.certificatId)
+            this.filtreQuestion= this.questions.filter(question=>this.filtreListCertificatChapitre.some(chapitre=>chapitre.id==question.chapitre))
+            console.log('|||||||||||||||||||||||||||||||||||||', this.certificatId)  
+            this.CertificatService.getOption().subscribe(data => {
+              this.options = data
+              console.log('|||||||||||||||||||||||||||||||||||||', this.filtreQuestion,'................')  
+
+            });
+  
+          });
+
+        
+
         });
       });
   
       
     }
+
+        // chargement des questions et reponse
+
+        selectOption(questionId: number, optionId: number): void {
+          const index = this.reponses.findIndex(r => r.question === questionId);
+          if (index !== -1) {
+            this.reponses[index].choix = optionId;
+          } else {
+            this.reponses.push({ question: questionId, choix: optionId });
+          }
+          console.log('nnnnnnnnnnnnnnnnnnnnnnnn',this.reponses)
+        }
+      
+        submitReponses(): void {
+          this.CertificatService.submitReponses(this.reponses).subscribe(result => {
+            alert(`Taux de succès : ${result.tauxDeSucces}%`);
+          });
+        }
 
 
 

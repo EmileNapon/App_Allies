@@ -75,4 +75,27 @@ getContenu(): Observable<any[]> {
 return this.http.get<any[]>(this.contenuUrl);
 
 }
+
+
+
+private baseUrlQuestios = 'http://127.0.0.1:8000/fidalli';
+
+getQuestion(): Observable<any[]> {
+  return this.http.get<any[]>(`${this.baseUrlQuestios}/questions/`);
+}
+
+getOption(): Observable<any[]> {
+  return this.http.get<any[]>(`${this.baseUrlQuestios}/options/`);
+}
+
+ 
+
+
+submitReponses(reponses: any[]): Observable <any>{
+  return this.http.post(`${this.baseUrlQuestios}/reponses/`, reponses);
+}
+
+getTauxDeSucces(utilisateurId: number): Observable<any> {
+  return this.http.get(`${this.baseUrlQuestios}/taux-succes/?utilisateur_id=${utilisateurId}`);
+}
 }

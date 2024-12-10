@@ -1,6 +1,6 @@
 
     
-  <app-headerPrincipale></app-headerPrincipale>
+
 
 
 
@@ -103,3 +103,21 @@
           </div>
         </div>
         -->
+
+
+        <div *ngFor="let question of filtreQuestion">
+          <h3>{{ question.texte }}</h3>
+          <div *ngFor="let option of options">
+            <label>
+              <input
+                type="radio"
+                name="question{{ question.id }}"
+                [value]="option.id"
+                (change)="selectOption(question.id, option.id)"
+              />
+              {{ option.texte }}
+            </label>
+          </div>
+        </div>
+        <button (click)="submitReponses()">Soumettre</button>
+    
