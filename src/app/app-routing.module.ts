@@ -24,7 +24,7 @@ import { GestionnaireCoursComponent } from './gestionnaire/gestionnaire-cours/ge
 
 import { CertificationComponent } from './module-formation-certification/certification/certification.component';
 import { CertificationContenuComponent } from './module-formation-certification/certification-contenu/certification-contenu.component';
-import { certificationContenuParcours1Component } from './module-formation-certification/certification-contenu_etape_1/certificationContenuEtape';
+import { certificationContenuChapitreComponent } from './module-formation-certification/certification-contenu_chapitre/certification-contenu_chapitre';
 import { GestionnaireCertificatComponent } from './gestionnaire/gestionnaire-certificat/gestionnaire-certificat.component';
 import { GestionnaireCertificatCoursComponent } from './gestionnaire/gestionnaire-certificat-cours/gestionnaire-certificat-cours.component';
 import { WebinarListComponent } from './module-formation-certification/webinar/components/webinar-list/webinar-list.component';
@@ -101,7 +101,9 @@ const routes: Routes = [
   {path:'certification/:idCertification/certification', component:CertificationContenuComponent},
   {path:'certification', component:CertificationComponent},
   {path:'certification/:idCertification/certification', component:CertificationContenuComponent},
-  {path:'parcours/:idCertificationEParcours1', component:certificationContenuParcours1Component},
+
+  {path:'parcours/:idCertificationContenuChapitre', component:certificationContenuChapitreComponent},
+  {path:'parcours/certificationContenuChapitre/:idQuiz/quiz', component:certificationContenuChapitreComponent},
 
   {path:'usersPages',component:GestionUtilisateursComponent,children:[
     {path:'register', component:RegistrationComponent}, 

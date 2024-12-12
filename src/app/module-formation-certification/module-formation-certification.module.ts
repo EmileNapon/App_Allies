@@ -15,7 +15,7 @@ import { ModuleComponent } from './domaines-listes/domaines.component';
 
 
 import { CertificationContenuComponent } from './certification-contenu/certification-contenu.component';
-import { certificationContenuParcours1Component } from './certification-contenu_etape_1/certificationContenuEtape';
+import { certificationContenuChapitreComponent } from './certification-contenu_chapitre/certification-contenu_chapitre';
 
 
 import { HeaderFormationComponent } from '../header-footer/header-formation/header-formation.component';
@@ -37,6 +37,7 @@ import { HeaderPrincipalePourFormationComponent } from './header-footer/header-p
 import { FormatDatePipe } from './a_pipes/datePipe';
 import{CustomDateTimePipe} from './a_pipes/dateHeurePipe'
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { ChapitreQuizComponent } from './certification-contenu_chapitre/chapitre-quiz/chapitre-quiz.component';
 
 
 
@@ -48,18 +49,17 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     CertificationComponent,
 
     CoursComponent,
-    AcceuilFormationComponent, ModuleComponent, 
-    CertificationContenuComponent,
-    certificationContenuParcours1Component,
+    AcceuilFormationComponent,ModuleComponent,
+    certificationContenuChapitreComponent,
     HeaderFormationComponent,WebinarComponent,
     WebinarListComponent,
     WebinarDetailsComponent,
     WebinarEnrollComponent,
     WebinarManagementComponent,
-    ChapitreComponent,HeaderPrincipalePourFormationComponent,
+    ChapitreComponent,HeaderPrincipalePourFormationComponent,CertificationContenuComponent,
     
 
-  FormationComponent, FormationDetailComponent, InscriptionPragraTalentComponent,DasbordEtudiantTalentComponent, FormatDatePipe, CustomDateTimePipe
+  FormationComponent, FormationDetailComponent, InscriptionPragraTalentComponent,DasbordEtudiantTalentComponent, FormatDatePipe, CustomDateTimePipe, ChapitreQuizComponent
   ],
   imports: [
     CommonModule, ReactiveFormsModule,  HttpClientModule, RouterModule, FormsModule,ReactiveFormsModule, CKEditorModule

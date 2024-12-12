@@ -1,0 +1,128 @@
+
+    
+
+
+
+
+
+
+  <div class="container main-content">
+    <div class="row">
+      <!-- Titre principal -->
+      <h2 class="main-header">{{filtredCertificat[0].title}}</h2>
+      
+      <!-- Contenu principal -->
+      <div class="container main-content" *ngIf="filtreListCertificatChapitre.length > 0; else noChapters">
+        <div *ngIf='isStatut==true'>
+        <section class="course-details" *ngFor="let chapitre of filtreListCertificatChapitre; let i = index">
+          <div *ngIf="i === currentIndex">
+            <!-- Titre du chapitre -->
+            <h2>{{ chapitre.id }} - {{ chapitre.titre }}</h2>
+  
+            <ul class="objectives-list">
+              <li class="course-section">
+                <section>
+                  <hr>
+                  <ol class="course-content" *ngFor="let contenu of filtrecertificatContenu">
+                    <li class="course-item completed" *ngIf="chapitre.id === contenu.chapitre">
+                      <span class="status-icon" title="Bravo, vous avez terminé ce chapitre !">
+                        <i class="icon-check2"></i>
+                      </span>
+                      <h4>{{ contenu.id }}. {{ contenu.sous_titre }}</h4>
+                    </li>
+                    <div *ngIf="chapitre.id === contenu.chapitre">
+                      <p>{{ contenu.description }}</p>
+                    </div>
+                  </ol>  
+                 /////////////////////
+  
+               
+                 <div *ngFor="let question of filtreQuestion">
+                  <div *ngIf='question.chapitre==chapitre.id'>
+                  <h3>{{ question.texte }}</h3>
+                  <div *ngFor="let option of options">
+                    <label>
+                      <input
+                        type="radio"
+                        name="question{{ question.id }}"
+                        [value]="option.id"
+                        (change)="selectOption(question.id, option.id)"
+                      />
+                      {{ option.texte }}
+                    </label>
+                  </div>
+                </div>
+              </div>
+                <button *ngIf="allQuestionsAnswered()" (click)="submitReponses()">Soumettre</button>  
+                  <!-- Quiz -->
+                  <div class="course-quiz">
+                    <ul>
+                      <li><a>Quiz : Préparer le terrain pour Angular</a></li>
+                    </ul>
+                  </div>
+                </section>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+  
+        <!-- Boutons de navigation -->
+        <div *ngIf='isStatut==false' class="actions">
+          <button class="btn btn-secondary" (click)="prevChapter()" [disabled]="currentIndex === 0">
+            Retour
+          </button>
+          <button class="btn btn-primary" (click)="nextChapter()" [disabled]="currentIndex === filtreListCertificatChapitre.length - 1">
+            Continuer
+          </button>
+        </div>
+      </div>
+  
+      <!-- Message si aucun chapitre -->
+      <ng-template #noChapters>
+        <p>Aucun chapitre disponible.</p>
+      </ng-template>
+    </div>
+  </div>
+
+    
+
+        <!--<div class="col-sm-4 mb-6 mb-sm-0"  >
+          <div class="card" style='border:none'>
+
+            <div  class="card-body" *ngFor='let contenu of filtrecertificatContenu' >
+              <p  class="card-title"><i class="bi bi-file-earmark-plus-fill" style='color:#3e576e;padding-left:5px'></i><span style='padding:5px;'>contenu.sous_titre</span></p>
+            </div>
+            <div  class="card-body" *ngFor='let contenu of filtrecertificatContenu' >
+              <p  class="card-title"><i class="bi bi-file-earmark-plus-fill" style='color:#3e576e;padding-left:5px'></i><span style='padding:5px;'>contenu.descrition</span></p>
+            </div>
+
+            <div  class="card-body" *ngFor='let x of filteredCertificatsArticle' >
+              <p  class="card-title"><i class="bi bi-file-earmark-plus-fill" style='color:#3e576e;padding-left:5px'></i><span style='padding:5px;'>Article | {{x.titreArticle}}</span></p>
+            </div>
+            <div class="card-body" *ngFor='let x of filteredCertificatsVideo'>
+              <p class="card-title"><i class="bi bi-camera-video-fill" style='color:#3e576e;padding-left:5px'></i> <span style='padding:5px;'>Video | {{x.titreVideo}}</span></p>
+            </div>
+            <div class="card-body" *ngFor='let x of filteredCertificatPosdcast'>
+              <p class="card-title"><i class="bi bi-play-fill"  style='color:#3e576e;padding-left:5px'></i><span style='padding:5px;'>Posdcast | {{x.titrePodcast}}</span></p>
+            </div>
+            <div class="card-body" *ngFor='let x of filteredCertificatPosdcast'>
+              <button (click)='onSelectPage(1)' class="card-title"><i class="bi bi-clock-fill"  style='color:#3e576e;padding-left:5px'></i><span style='padding:5px;'>Evaluation</span></button>
+            </div> 
+          </div>
+        </div> 
+        <div class="col-sm-8">
+          <div class="card" style='border:none'>
+            <div class="card-body">
+              <video width="520" height="280" controls>
+                <source [src]="" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture de vidéos.
+              </video>
+
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+        -->
+
+
