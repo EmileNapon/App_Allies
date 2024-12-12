@@ -194,6 +194,8 @@ reponses: { question: number; choix: number }[] = [];
             this.reponses.push({ question: questionId, choix: optionId });
           }
           console.log('nnnnnnnnnnnnnnnnnnnnnnnn',this.reponses)
+          
+          
         }
       
 
@@ -221,11 +223,7 @@ reponses: { question: number; choix: number }[] = [];
 
 
 
-        // calculateDetailsLocally(reponses: any[]): void {
-        //   this.totalQuestions = reponses.length;
-        //   this.bonnesReponses = reponses.filter((r) => r.correct).length;
-        //   this.tauxDeSucces = (this.bonnesReponses / this.totalQuestions) * 100;
-        // }
+  
 
         submitReponses(): void {
           this.CertificatService.submitReponses(this.reponses).subscribe(result => {
@@ -242,6 +240,7 @@ reponses: { question: number; choix: number }[] = [];
             next: (data) => {
               this.tauxDeSucces = data.tauxDeSucces;
               console.log('Taux de succès récupéré :', data.tauxDeSucces);
+              this.calculateDetailsLocally(data); // Appel de la méthode ici
             },
             error: (err) => {
               console.error('Erreur lors de la récupération du taux de succès:', err);
@@ -250,9 +249,10 @@ reponses: { question: number; choix: number }[] = [];
         }
       
         calculateDetailsLocally(reponses: any[]): void {
+          
           this.totalQuestions = reponses.length;
           this.bonnesReponses = reponses.filter((r) => r.correct).length;
-          this.tauxDeSucces = (this.bonnesReponses / this.totalQuestions) * 100;
+   
         }
 
 
