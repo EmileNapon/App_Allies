@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { CertificationService } from "../certification/certification-service/certificationService";
 import { ActivatedRoute, Router } from "@angular/router";
 import DOMPurify from 'dompurify';
+import { AuthService } from "../../gestion-utilisateurs/connexion/service-connexion/service-connexion.service";
 
 @Component({
     selector:'app-certification-contenu_chapitre',
@@ -95,10 +96,12 @@ reponses: { question: number; choix: number }[] = [];
   bonnesReponses: number = 0;
 
   userInfo: { email: string | null, firstName: string | null, lastName: string | null, profilePic: string | null, id:string | null } | null = null;
-
-  constructor( private CertificatService:CertificationService, private router: Router, private route: ActivatedRoute){}
+  userId !:number 
+  constructor(private serviceAuth: AuthService, private CertificatService:CertificationService, private router: Router, private route: ActivatedRoute){}
   
   ngOnInit(): void {
+    this.userInfo = this.serviceAuth.getUserInfo();
+    this.userId= Number(this.userInfo?.id)
     this.certificatId = this.route.snapshot.paramMap.get('idCertificationContenuChapitre');
     this.getCertification()
     this.getCoursUseCertification()
@@ -232,6 +235,25 @@ reponses: { question: number; choix: number }[] = [];
           this.isStatut=!this.isStatut
         }
 
+
+        fetchTauxSucces(): void {
+          console.log('############',this.userId)
+          this.CertificatService.getTauxDeSucces(this.userId).subscribe({
+            next: (data) => {
+              this.tauxDeSucces = data.tauxDeSucces;
+              console.log('Taux de succès récupéré :', data.tauxDeSucces);
+            },
+            error: (err) => {
+              console.error('Erreur lors de la récupération du taux de succès:', err);
+            }
+          });
+        }
+      
+        calculateDetailsLocally(reponses: any[]): void {
+          this.totalQuestions = reponses.length;
+          this.bonnesReponses = reponses.filter((r) => r.correct).length;
+          this.tauxDeSucces = (this.bonnesReponses / this.totalQuestions) * 100;
+        }
 
 
     // Contenus:any[]=[]

@@ -126,3 +126,22 @@
         -->
 
 
+        <div>
+          <h1>Taux de Succès</h1>
+        
+          <div *ngIf="tauxDeSucces !== null">
+            <p>Taux de succès : {{ tauxDeSucces | number: '1.2-2' }}%</p>
+          </div>
+          <div *ngIf="tauxDeSucces === null">
+            <p>Chargement...</p>
+          </div>
+        
+          <button (click)="fetchTauxSucces()">Rafraîchir</button>
+        
+          <div *ngIf="totalQuestions > 0">
+            <h3>Détails du quiz</h3>
+            <p>Total des questions : {{ totalQuestions }}</p>
+            <p>Bonnes réponses : {{ bonnesReponses }}</p>
+          </div>
+        </div>
+        
