@@ -59,6 +59,8 @@ import { ajoutModuleComponent } from './gestionnaire/programme-talent/formation/
 import { OfferListComponent } from './offer/components/offer-list/offer-list.component';
 import { OfferDetailsComponent } from './offer/components/offer-details/offer-details.component';
 import { OfferApplicationComponent } from './offer/components/offer-application/offer-application.component';
+import { AuthGuard } from './admin/guards/auth.guard';
+import { LoginComponent } from './admin/components/login/login.component';
 
 const routes: Routes = [
 
@@ -70,6 +72,13 @@ const routes: Routes = [
   {path:'premiumEtudiant', component:PremiumEtudiantComponent},
   {path:'acceuil', component:AcceuilComponent},
 
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+    canActivate: [AuthGuard]
+  },
+
+  { path: 'login', component: LoginComponent },
 
   { path: 'webinar-list', component: WebinarListComponent },
   { path: 'webinar-details/:id/detail', component: WebinarDetailsComponent },
