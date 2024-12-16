@@ -95,7 +95,8 @@ submitReponses(reponses: any[]): Observable <any>{
   return this.http.post(`${this.baseUrlQuestios}/reponses/`, reponses);
 }
 
-getTauxDeSucces(utilisateurId: number): Observable<any> {
-  return this.http.get(`${this.baseUrlQuestios}/taux-succes/?utilisateur_id=${utilisateurId}`);
+postReponses(utilisateurId: number, chapitreId: number, reponses: any): Observable<any> {
+  const url = `${this.baseUrlQuestios}?utilisateur_id=${utilisateurId}&chapitre_id=${chapitreId}`;
+  return this.http.post(url, { reponses });
 }
 }

@@ -13,13 +13,13 @@
       
       <!-- Contenu principal -->
       <div class="container main-content" *ngIf="filtreListCertificatChapitre.length > 0; else noChapters">
-        <div *ngIf='isStatut==true'>
+        <div >
         <section class="course-details" *ngFor="let chapitre of filtreListCertificatChapitre; let i = index">
           <div *ngIf="i === currentIndex">
             <!-- Titre du chapitre -->
             <h2>{{ chapitre.id }} - {{ chapitre.titre }}</h2>
   
-            <ul class="objectives-list">
+            <ul class="objectives-list" *ngIf='isStatut==true'>
               <li class="course-section">
                 <section>
                   <hr>
@@ -34,36 +34,8 @@
                       <p>{{ contenu.description }}</p>
                     </div>
                   </ol>  
-                 /////////////////////
-  
-               
-                 <div *ngFor="let question of filtreQuestion">
-                  <div *ngIf='question.chapitre==chapitre.id'>
-                  <h3>{{ question.texte }}</h3>
-                  <div *ngFor="let option of options">
-                    <label>
-                      <input
-                        type="radio"
-                        name="question{{ question.id }}"
-                        [value]="option.id"
-                        (change)="selectOption(question.id, option.id)"
-                      />
-                      {{ option.texte }}
-                    </label>
-                  </div>
-                </div>
-              </div>
-                <button *ngIf="allQuestionsAnswered()" (click)="submitReponses()">Soumettre</button>  
-                  <!-- Quiz -->
-                  <div class="course-quiz">
-                    <ul>
-                      <li><a>Quiz : Préparer le terrain pour Angular</a></li>
-                    </ul>
-                  </div>
-                </section>
-              </li>
-            </ul>
-          </div>
+
+
         </section>
       </div>
   
@@ -126,54 +98,6 @@
         -->
 
 
-        <div>
-          <h1>Taux de Succès</h1>
-        
-          <div *ngIf="tauxDeSucces !== null">
-            <p>Taux de succès : {{ tauxDeSucces | number: '1.2-2' }}%</p>
-          </div>
-          <div *ngIf="tauxDeSucces === null">
-            <p>Chargement...</p>
-          </div>
-        
-          <button (click)="fetchTauxSucces()">Rafraîchir</button>
-        
-          <div *ngIf="totalQuestions > 0">
-            <h3>Détails du quiz</h3>
-            <p>Total des questions : {{ totalQuestions }}</p>
-            <p>Bonnes réponses : {{ bonnesReponses }}</p>
-          </div>
-        </div>
-      
-<!--
 
-        <div>
-          <h1>Taux de Succès</h1>
-        
-          <div *ngIf="tauxDeSucces !== null">
-            <p>Taux de succès : {{ tauxDeSucces | number: '1.2-2' }}%</p>
-          </div>
-          <div *ngIf="tauxDeSucces === null">
-            <p>Chargement...</p>
-          </div>
-        
-          <button (click)="fetchTauxSucces()">Rafraîchir</button>
-        
-          <div *ngIf="totalQuestions > 0">
-            <h3>Détails du quiz</h3>
-            <p>Total des questions : {{ totalQuestions }}</p>
-            <p>Bonnes réponses : {{ bonnesReponses }}</p>
-        
-            <h3>Correction des réponses</h3>
-            <ul>
-              <li *ngFor="let reponse of reponses">
-                <span [ngClass]="{ 'correct': reponse.correct, 'incorrect': !reponse.correct }">
-                  {{ reponse.question }}
-                </span>
-                : {{ reponse.reponseUtilisateur }}
-              </li>
-            </ul>
-          </div>
-        </div>
 
-        -->
+        

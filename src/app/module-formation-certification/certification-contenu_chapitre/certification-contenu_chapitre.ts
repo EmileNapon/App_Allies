@@ -234,9 +234,9 @@ reponses: { question: number; choix: number }[] = [];
         }
 
 
-        fetchTauxSucces(): void {
+        fetchTauxSucces(id:number): void {
           console.log('############',this.userId)
-          this.CertificatService.getTauxDeSucces(this.userId).subscribe({
+          this.CertificatService.postReponses(this.userId, 1, this.reponses).subscribe({
             next: (reponse) => {
               this.tauxDeSucces = reponse.tauxDeSucces;
               console.log('Taux de succès récupéré :', reponse.tauxDeSucces);
@@ -252,6 +252,9 @@ reponses: { question: number; choix: number }[] = [];
           
           this.totalQuestions = reponses.length;
           this.bonnesReponses = reponses.filter((r) => r.correct).length;
+          // this.tauxDeSucces = (this.totalQuestions > 0)
+          // ? (this.bonnesReponses / this.totalQuestions) * 100
+          // : 0;
    
         }
 
