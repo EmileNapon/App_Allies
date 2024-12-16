@@ -40,6 +40,7 @@ export class ResourceEditComponent implements OnInit, OnDestroy {
     console.log(`Log: [Id de la resource] :`, this.resourceId);
     this.resource = ressources[this.resourceType]?.resource;
     this.resourceFieldsToEdit = this.resource.options.properties.editProperties;
+    
     this.initializeForm();
     if (this.resourceId) {
       this.loadResource(this.resourceType, this.resourceId);
@@ -67,6 +68,7 @@ export class ResourceEditComponent implements OnInit, OnDestroy {
 
     // Custom validation (e.g., for password confirmation)
     this.form = this.fb.group(formControls, { validators: [this.passwordMatchValidator] });
+
   }
 
   private populateForm(): void {
@@ -75,6 +77,7 @@ export class ResourceEditComponent implements OnInit, OnDestroy {
       this.resourceFieldsToEdit.forEach(field => {
         if (this.resourceToEdit[field.name] !== undefined) {
           formValues[field.name] = this.resourceToEdit[field.name];
+  
         }
       });
       this.form.patchValue(formValues); // Remplir le formulaire avec les données de resourceToEdit
@@ -96,6 +99,7 @@ export class ResourceEditComponent implements OnInit, OnDestroy {
         this.resourceToEdit = resource;
         this.isLoading = false;
         this.populateForm();  // Populer le formulaire avec les données chargées
+        
       },
       error: (err) => {
         this.errorMessage = 'Impossible de charger les données.';
@@ -110,13 +114,13 @@ export class ResourceEditComponent implements OnInit, OnDestroy {
       this.showToast('Données invalides', 'error');
       return;
     }
-    if (!this.resourceToEdit._id) {
+    if (!this.resourceToEdit.id) {
       this.showToast('L\'ID est manquant', 'error');
       return;
     }
     // Afficher le spinner
     this.isLoading = true;
-    this.resourceService.updateResource(this.resourceType, this.resourceToEdit._id, updatedData).subscribe({
+    this.resourceService.updateResource(this.resourceType, this.resourceToEdit.id, updatedData).subscribe({
       next: () => {
         // Masquer le spinner après mise à jour réussie
         this.isLoading = false;

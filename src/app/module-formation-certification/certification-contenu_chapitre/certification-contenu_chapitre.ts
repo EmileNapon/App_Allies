@@ -237,10 +237,10 @@ reponses: { question: number; choix: number }[] = [];
         fetchTauxSucces(): void {
           console.log('############',this.userId)
           this.CertificatService.getTauxDeSucces(this.userId).subscribe({
-            next: (data) => {
-              this.tauxDeSucces = data.tauxDeSucces;
-              console.log('Taux de succès récupéré :', data.tauxDeSucces);
-              this.calculateDetailsLocally(data); // Appel de la méthode ici
+            next: (reponse) => {
+              this.tauxDeSucces = reponse.tauxDeSucces;
+              console.log('Taux de succès récupéré :', reponse.tauxDeSucces);
+              this.calculateDetailsLocally(reponse); // Appel de la méthode ici
             },
             error: (err) => {
               console.error('Erreur lors de la récupération du taux de succès:', err);

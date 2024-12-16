@@ -44,6 +44,7 @@ export class ResourceListComponent implements OnInit, OnDestroy {
     this.resourceType = this.route.snapshot.paramMap.get('resourceType') || '';
     this.loadResourceConfig();
     this.loadData();
+    console.log("$$$$$$$$$$$$$$$$$", this.resourceType)
   }
 
   ngOnDestroy(): void {

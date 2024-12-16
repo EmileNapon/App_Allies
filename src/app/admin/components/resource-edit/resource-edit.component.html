@@ -12,10 +12,11 @@
       <div *ngFor="let field of resourceFieldsToEdit" class="form-field">
         <mat-form-field appearance="outline" *ngIf="['text', 'email', 'password', 'tel', 'phone'].includes(field.type)">
           <mat-label>{{ field.label }}</mat-label>
+         
           <input
             matInput
             [type]="field.type"
-            [formControlName]="field.name"
+            [formControlName]="field.name" 
             [placeholder]="field.placeholder || ''"
           />
           <mat-error *ngIf="form.get(field.name)?.hasError('required')">{{field.errorMessage}}.</mat-error>
