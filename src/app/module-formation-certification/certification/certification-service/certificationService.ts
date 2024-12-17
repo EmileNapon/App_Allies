@@ -96,7 +96,7 @@ submitReponses(reponses: any[]): Observable <any>{
 }
 
 postReponses(utilisateurId: number, chapitreId: number, reponses: any): Observable<any> {
-  const url = `${this.baseUrlQuestios}?utilisateur_id=${utilisateurId}&chapitre_id=${chapitreId}`;
+  const url = `${this.baseUrlQuestios}/reponses/?utilisateur_id=${utilisateurId}&chapitre_id=${chapitreId}`;
   return this.http.post(url, { reponses });
 }
 }
