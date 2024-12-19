@@ -205,7 +205,11 @@ reponses: { question: number; choix: number }[] = [];
   
 
         submitReponses(): void {
-          this.CertificatService.postReponses(this.userId, 1, this.reponses).subscribe(result => {
+          let reponses={
+            "user":16, "chapitre":1, "reponses" :this.reponses
+           }
+           console.log("ssssssssssssssssssss",reponses)
+          this.CertificatService.postReponses(this.userId, 1, reponses).subscribe(result => {
             alert(`Taux de succès : ${result.tauxDeSucces}%`);
             //console.log('/////////////',result.tauxDeSucces)
           });
@@ -221,7 +225,7 @@ reponses: { question: number; choix: number }[] = [];
 
 
         fetchTauxSucces(): void {
-          console.log('############',this.userId)
+
           this.CertificatService.postReponses(this.userId, 1, this.reponses).subscribe({
             next: (reponse) => {
               this.tauxDeSucces = reponse.tauxDeSucces;
