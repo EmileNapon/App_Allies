@@ -23,43 +23,63 @@
               <li class="course-section">
                 <section>
                   <hr>
-                  <ol class="course-content" *ngFor="let contenu of filtrecertificatContenu">
-                    <li class="course-item completed" *ngIf="chapitre.id === contenu.chapitre">
+                  <ul class="course-content" *ngFor="let contenu of filtrecertificatContenu">
+                    <ul class="course-item completed" *ngIf="chapitre.id === contenu.chapitre">
                       <span class="status-icon" title="Bravo, vous avez terminé ce chapitre !">
                         <i class="icon-check2"></i>
                       </span>
                       <h4>{{ contenu.id }}. {{ contenu.sous_titre }}</h4>
-                    </li>
+                    </ul>
                     <div *ngIf="chapitre.id === contenu.chapitre">
                       <p>{{ contenu.description }}</p>
                     </div>
-                  </ol>  
+                  </ul>  
                 </section>
-
-
-                <section>
+                <section *ngFor="let question of filtreQuestion" >
                   <hr>
-                  <ol class="course-content" *ngFor="let question of filtreQuestion">
-                    <li class="course-item completed" *ngIf="chapitre.id === question.chapitre">
+                  <ul class="course-content" *ngIf="chapitre.id === question.chapitre" >
+                    <ul class="course-item completed" >
                       <h4>{{ question.id }}. {{ question.texte }}</h4>
-                    </li>
-                  </ol>  
+                    </ul>
+                    <div *ngFor='let option of options'>
+                     <label *ngIf="option.question === question.id" >
+                      <input
+                        type="radio"
+                        name="question{{ question.id }}"
+                        [value]="option.id"
+                        (change)="selectOption(question.id, option.id)"
+                      />
+                      {{ option.texte }}
+                    </label>
+                    </div>
+                  </ul> 
                 </section>
-
-
+                <div class="actions" style='padding-left:30px'>
+                  <button class="btn btn-primary" *ngIf="allQuestionsAnswered()" (click)="submitReponses()">Soumettre</button>
+                </div>
                 </li>
+
+<!--
+                <div class="chapter-status">
+                  <h5>Score : {{ score }}/{{ totalQuestions }}</h5>
+                  <h5 *ngIf="isChapterCompleted" class="status-valid">Statut : Validé</h5>
+                  <h5 *ngIf="!isChapterCompleted" class="status-retry">Statut : À Revoir</h5>
+                </div>
+
+-->
               </ul>
             </div>
         </section>
       </div>
   
-       
+       {{tauxDeSucces}}
         <div *ngIf='isStatut==false' class="actions">
+          <button *ngIf="allQuestionsAnswered()" (click)="submitReponses()">Soumettre</button>
           <button class="btn btn-secondary" (click)="prevChapter()" [disabled]="currentIndex === 0">
             Retour
           </button>
           <button class="btn btn-primary" (click)="nextChapter()" [disabled]="currentIndex === filtreListCertificatChapitre.length - 1">
-            Continuer
+     continuer
           </button>
         </div>
       </div>
